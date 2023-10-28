@@ -1,0 +1,226 @@
+.promociones {
+    padding: 4rem 0;
+    overflow: hidden;
+
+    // .row{
+    //   gap:2.625rem;
+    // }
+
+    &--info {
+        color: var(--color-azul-2);
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .container-carrusel {
+        margin-top: 42px;
+        // padding-right: 0;
+    }
+    &--carrusel {
+        flex-flow: row nowrap;
+        align-items: center;
+        overflow-x: scroll;
+        height: 400px;
+        & div:last-child {
+            margin-right: 10px;
+        }
+    }
+
+    &--card {
+        background: var(--color-azul-3);
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 48px 0px rgba(95, 171, 221, 0.16);
+        position: relative;
+
+        .card--badge {
+            display: flex;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 16px;
+            background: var(--color-amarillo);
+            color: var(--color-azul-2);
+            width: fit-content;
+            position: absolute;
+            left: 16px;
+            top: -8px;
+
+            .badge--desc {
+                font-family: var(--font-primaria-bold);
+                font-size: 14px;
+                line-height: 14px;
+            }
+        }
+        .card-body {
+            padding: 32px 24px 0 24px;
+        }
+        .card-title {
+            margin-bottom: 16px;
+        }
+        .card-text {
+            height: 70px;
+            font-family: var(--font-secundaria-regular);
+            color: var(--color-gris-1);
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .card-link {
+            font-family: var(--font-secundaria-bold);
+            color: var(--color-azul-2);
+            display: inline-block;
+            margin: 24px 0;
+        }
+        .card--img {
+            width: 100%;
+        }
+    }
+}
+
+.efectivo {
+    padding: 4rem 0;
+    background: var(--color-azul-3);
+    border-radius: 2.5rem;
+
+    .row {
+        gap: 1.5rem;
+    }
+
+    &--image {
+        img {
+            width: 100%;
+        }
+        .img-mobile {
+            width: auto;
+        }
+
+        .img-portrait {
+            display: none;
+        }
+        .img-desktop {
+            display: none;
+        }
+    }
+    &--info {
+        h2 {
+            color: var(--color-azul-2);
+            font-size: 2rem;
+            line-height: 2.5rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            line-height: 1.625rem;
+            margin: 1.5rem 0;
+        }
+
+        .dia {
+            color: var(--color-azul-2);
+            font-size: 24px;
+            line-height: 32px;
+        }
+        .comision {
+            font-size: 18px;
+            line-height: 28px;
+        }
+    }
+
+    .alert--card {
+        margin-top: 24px;
+    }
+}
+
+.terminos {
+    padding: 64px 0;
+    background: var(--color-azul-3);
+    color: var(--color-gris-500);
+    font-family: var(--font-secundaria-regular);
+    font-size: 16px;
+    line-height: 24px;
+
+    p {
+        margin-bottom: 26px;
+    }
+    p:last-child {
+        margin-bottom: 0;
+    }
+    p span.campania {
+        color: var(--color-azul-2);
+    }
+    p:first-child {
+        font-size: 18px;
+        line-height: 28px;
+    }
+
+    p:last-child span {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
+
+.main-promo {
+    padding: 24px 0 0;
+
+    .link-back {
+        a {
+            @include text-sm-16;
+            color: var(--color-azul-2);
+            font-family: var(--font-secundaria-bold);
+            display: inline-flex;
+            column-gap: 8px;
+            text-decoration: none;
+        }
+    }
+
+    .col-12 {
+        row-gap: 24px;
+        display: grid;
+    }
+
+    &--info {
+        display: grid;
+        row-gap: 16px;
+        margin-top: 24px;
+
+        h1 {
+            @include text-lg-32;
+        }
+        p {
+            @include text-sm-18;
+        }
+        h5 {
+            @include text-sm-16;
+        }
+
+        a {
+            color: var(--color-azul-2) !important;
+            text-decoration: underline !important;
+            cursor: pointer;
+        }
+    }
+
+    .img-codigo {
+        width: 59%;
+        display: block;
+    }
+
+    &--legales {
+        border-radius: 40px 40px 0px 0px;
+        background: var(--color-azul-3);
+        padding: 64px 0;
+        margin-top: 64px;
+
+        .custom-container {
+            display: grid;
+            row-gap: 24px;
+        }
+
+        h5 {
+            @include text-sm-18;
+            color: var(--color-gris-500);
+        }
+
+        p {
+            color: var(--color-gris-500);
+            @include text-sm-16;
+        }
+    }
+}

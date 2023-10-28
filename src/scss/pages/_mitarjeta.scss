@@ -1,0 +1,226 @@
+.main-tarjeta {
+    background: var(--color-azul-3);
+
+    .section-hero {
+        padding: 40px 0;
+        background: var(--color-blanco-1);
+        border: 0 0 16px;
+    }
+
+    .fechas {
+        padding: 64px 0;
+
+        .custom-container {
+            row-gap: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .row {
+            row-gap: 16px;
+        }
+
+        .fechas-carrusel-row {
+            row-gap: 24px;
+        }
+
+        h2 {
+            @include text-lg-32;
+            color: var(--color-azul-2);
+        }
+
+        &-carrusel {
+            flex-flow: row nowrap;
+            column-gap: 12px;
+            display: flex;
+
+            .carrusel-item {
+                flex: 1 1 33.33%;
+                display: flex;
+                position: relative;
+
+                &.active {
+                    .card {
+                        @extend .card-icon-active;
+                    }
+
+                    &:before {
+                        content: "\A";
+                        border-style: solid;
+                        border-width: 10px 15px 15px 15px;
+                        border-color: transparent transparent #fff transparent;
+                        position: absolute;
+                        bottom: -25px;
+                        left: 30px;
+                    }
+                }
+            }
+
+            custom-card-icon {
+                padding: 0;
+                display: flex;
+            }
+        }
+
+        .swiper {
+            .swiper-slide {
+                display: flex;
+                height: auto;
+            }
+        }
+
+        #accordionExample {
+            position: relative;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none;
+            width: 48px;
+            height: 48px;
+            background: var(--color-blanco-1);
+            border-radius: 50%;
+
+            &::after {
+                color: var(--color-azul-2);
+                font-size: x-large;
+            }
+        }
+
+        .swiper-button-next {
+            right: -60px;
+        }
+        .swiper-button-prev {
+            left: -60px;
+        }
+
+        .accordion-body {
+            display: grid;
+            align-items: center;
+            row-gap: 16px;
+            border-radius: 16px;
+            background: var(--color-blanco-1);
+            padding: 16px 24px;
+
+            &__info {
+                display: grid;
+                row-gap: 16px;
+                place-content: baseline;
+            }
+
+            h4 {
+                @include text-md-20;
+                color: var(--color-azul-2);
+            }
+
+            p {
+                @include text-sm-16;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .main-tarjeta {
+        .fechas {
+            .custom-container {
+                row-gap: 40px;
+            }
+
+            h2 {
+                text-align: center;
+                place-items: center;
+            }
+
+            h4:not(.strong-circular) {
+                text-align: center;
+                @include text-sm-18;
+            }
+
+            .fechas-carrusel-row {
+                row-gap: 40px;
+                justify-content: center;
+            }
+
+            &-carrusel {
+                column-gap: 16px;
+                justify-content: center;
+
+                .carrusel-item {
+                    flex: 0 1 118px;
+
+                    &.active::before {
+                        left: 45px;
+                        bottom: -40px;
+                    }
+                }
+            }
+            .accordion-body {
+                column-gap: 16px;
+                padding: 24px;
+
+                picture {
+                    grid-column: 2 / 3;
+                }
+
+                &__info {
+                    grid-column: 1 / 2;
+                    grid-row: 1;
+                }
+
+                h4 {
+                    @include text-med-28;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .main-tarjeta {
+        .fechas {
+            padding: 96px 0;
+
+            .custom-container {
+                row-gap: 64px;
+            }
+
+            h2 {
+                @include text-lg-48;
+            }
+
+            h4:not(.strong-circular) {
+                @include text-md-24;
+            }
+
+            &-carrusel {
+                .carrusel-item {
+                    flex: 0 1 146px;
+
+                    &.active::before {
+                        left: 55px;
+                    }
+                }
+            }
+
+            .accordion-body {
+                column-gap: 44px;
+                padding: 32px 70px;
+
+                picture {
+                    width: 233px;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: grid;
+            }
+        }
+    }
+}

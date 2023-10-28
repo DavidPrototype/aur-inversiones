@@ -1,0 +1,100 @@
+.main-home {
+    .section-hero {
+        padding: var(--spacing05) 0;
+    }
+
+    .conoce {
+        padding: var(--spacing08) 0;
+        overflow: hidden;
+
+        .row {
+            row-gap: var(--spacing04);
+        }
+
+        #container-slide {
+            padding: var(--spacing04) 0 0;
+        }
+
+        .swiper {
+            padding: 0 var(--spacing03);
+        }
+    }
+
+    .opinion {
+        padding: var(--spacing08) 0;
+        overflow: hidden;
+        .row {
+            row-gap: var(--spacing04);
+        }
+
+        #container-slide-opinion {
+            padding: var(--spacing04) 0 0;
+        }
+
+        .swiper {
+            padding: 0 var(--spacing03);
+        }
+
+        .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    .main-home {
+        .conoce {
+            padding: var(--spacing10) 0;
+            .title-underline {
+                place-items: center;
+            }
+
+            #container-slide {
+                padding: var(--spacing07) calc(var(--bs-gutter-x) * 0.5) 0;
+            }
+
+            .swiper {
+                overflow: initial;
+                .swiper-wrapper {
+                    column-gap: var(--spacing04);
+                }
+
+                .swiper-slide {
+                    flex: 0 1 33.33%;
+                    padding: 0;
+                    display: flex;
+                    height: auto;
+
+                    & > * {
+                        display: flex;
+                    }
+
+                    .card {
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .opinion {
+            #container-slide-opinion {
+                padding: var(--spacing07) calc(var(--bs-gutter-x) * 0.5) 0;
+            }
+            .swiper {
+                overflow: initial;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .main-home {
+        .conoce,
+        .opinion {
+            .title-underline {
+                @include text-lg-48;
+            }
+        }
+    }
+}
