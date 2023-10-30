@@ -1,48 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>Inversiones BanCoppel</title>        
+    <title>Inversiones BanCoppel</title>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+    <custom-header nav-active="nav-inicio"></custom-header>
+    <main class="main-home">
+      <section class="section-hero">
+        <div class="custom-container">
+          <div class="row">
+            <custom-hero
+              tipo="primario"
+              titulo="Inversiones BanCoppel"
+              subtitulo="Te guiamos a crecer tus ahorros sin ser experto en finanzas "
+              texto-boton="Solicitar asesoría"
+              link-boton="#!"
+              id-boton="btn-hero"
+              imagen="img/hero-image-normal.png"
+              imagen-webp="img/hero-image-normal.webp"
+              icon="hide"
+              imagen-tarjeta="hide"
+            ></custom-hero>
+          </div>
+        </div>
+      </section>
 
-       
+      <section class="inversion">
+        <div class="custom-container">
+          <div class="row">
+            <div class="col-12 inversion--info">
+              <h2 class="title-underline">
+                Invierte tu dinero sin que pierda valor debajo del colchón
+              </h2>
+              <p>
+                Invertir es obtener ganancias que te ayudan a cumplir tus
+                sueños. Si es tu primera vez, BanCoppel tiene dos opciones para
+                ti:
+              </p>
+            </div>
+          </div>
 
-      
-    </head>
-    <body>
-    
-
-        <custom-header nav-active="nav-inicio"></custom-header>
-        <main class="main-home">
-            <section class="section-hero">
-                <div class="custom-container">
-                    <div class="row">
-                        <custom-hero
-                            tipo="primario"
-                            titulo="Inversiones BanCoppel"
-                            subtitulo="Te guiamos a crecer tus ahorros sin ser experto en finanzas "
-                            texto-boton="Solicitar asesoría"
-                            link-boton="#!"
-                            id-boton="btn-hero"
-                            imagen="img/hero-image-normal.png"
-                            imagen-webp="img/hero-image-normal.webp"
-                            icon="hide"
-                            imagen-tarjeta="hide"
-                        ></custom-hero>
-                    </div>
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="inversion--card">
+                <picture class="imagen">
+                  <source
+                    media="(min-width:1280px )"
+                    srcset="img/inversion-creciente-desktop.svg"
+                  />
+                  <img
+                    src="img/img-inversion-creciente.svg"
+                    alt="Imagen Inversion Creciente"
+                  />
+                </picture>
+                <div class="contenido">
+                  <p class="titulo">Inversión Creciente</p>
+                  <p class="subtitulo">Tu dinero crece y crece</p>
+                  <p class="descripcion">
+                    Retira tu dinero cuando lo necesites sin penalizaciones.
+                  </p>
+                  <a class="enlace" href="">¿Cuánto crece?</a>
                 </div>
-            </section>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="inversion--card">
+                <picture class="imagen">
+                  <source
+                    media="(min-width:1280px )"
+                    srcset="img/img-pagare-desktop.svg"
+                  />
+                  <img
+                    src="img/img-pagare.svg"
+                    alt="Imagen Inversion Creciente"
+                  />
+                </picture>
+                <div class="contenido">
+                  <p class="titulo">Pagaré</p>
+                  <p class="subtitulo">Recibe tu dinero con un extra</p>
+                  <p class="descripcion">
+                    Cumple tus metas financieras y elige un plazo para retirar.
+                  </p>
+                  <a class="enlace" href="">¿Cuánto gano?</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="promociones" id="promociones">
+        <div class="custom-container">
+          <div class="row">
+            <div class="col-4">
+              <h2 class="title-underline promociones--info">
+                Espacio para monetización
+              </h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="swiper promociones-grid col-xl-10">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <custom-card
+                    link="promocion-andrea.html"
+                    icon="icons/icon-bussines.svg"
+                    texto-badge="-10%"
+                    titulo="Andrea"
+                    descripcion="Aprovecha que tienes un descuento exclusivo. ¡Estrena y consiéntete!"
+                    imagen="img/home/Imagen.jpeg"
+                    imagenWebp="img/home/Imagen.webp"
+                  >
+                  </custom-card>
+                </div>
+                <div class="swiper-slide">
+                  <custom-card
+                    icon="icons/icon-bussines.svg"
+                    texto-badge="-10%"
+                    titulo="Farmacias VITAU"
+                    descripcion="Cuida tu salud al comprar con tu tarjeta."
+                    imagen="img/home/Imagen-2.jpeg"
+                    imagenWebp="img/home/Imagen-2.webp"
+                    link="promocion-vitau.html"
+                  ></custom-card>
+                </div>
+                <div class="swiper-slide">
+                  <custom-card
+                    icon="icons/icon-money.svg"
+                    texto-badge="Cupón"
+                    titulo="Burger King"
+                    descripcion="Tu tarjeta también te da cupones, ¡Quítate el antojo y disfruta!"
+                    imagen="img/burguer-desk.png"
+                    imagenWebp="img/burguer-desk.webp"
+                    link="promocion-burguer-king.html"
+                  ></custom-card>
+                </div>
+                <div class="swiper-slide">
+                  <custom-card
+                    icon="icons/icon-bussines.svg"
+                    texto-badge="-25%"
+                    titulo="Benedetti´s"
+                    descripcion="Pizza y descuentos, el plan perfecto con tu tarjeta. "
+                    imagen="img/pizza-card.png"
+                    imagenWebp="img/pizza-card.webp"
+                    link="promocion-benedettis.html"
+                  ></custom-card>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          
-            <custom-legales></custom-legales>
-        </main>
-        <custom-footer></custom-footer>
-        <script type="module" src="./js/main.js"></script>
-        <script type="module" src="./js/home.js"></script>
-    </body>
+      <section class="beneficios-template" id="beneficios">
+        <div class="custom-container">
+            <div class="row">
+                <div class="col-8 col-xl-4">
+                    <h2  class="title-underline">
+                        Beneficios de invertir
+                    </h2>
+                  <p class="subtitulo">
+                    Subtitulo
+                  </p>
+                </div>
+                <div class="col-xl-8 beneficios-template--img">
+                    <picture>
+                        <source
+                            srcset="img/beneficios.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            class="w-100"
+                            src="img/beneficios.png"
+                            alt="image/webp"
+                        />
+                    </picture>
+                </div>
+            </div>
+            <div class="row beneficios-template--cards">
+              <!-- Slider main container -->
+                <div class="swiper-beneficios col-xl-12">
+                    <div class="swiper-wrapper">
+                          <!-- Slides -->
+                          <div class="swiper-slide">
+                            <custom-card-icon
+                                icono="img/person-actividad-family-child-13.svg"
+                                titulo-card="<strong>Invertir es para todas las personas<strong>"
+                                alineacion="left"
+                                flujo="columna"
+                            ></custom-card-icon>
+                          </div>
+                          <div class="swiper-slide">
+                            <custom-card-icon
+                            icono="img/icon-metas.svg"
+                            titulo-card="<strong>Cumple tus metas financieras</strong>"
+                            alineacion="left"
+                            flujo="columna"
+                            ></custom-card-icon>
+                          </div>
+                          <div class="swiper-slide"> 
+                            <custom-card-icon
+                                icono="img/dinero.svg"
+                                titulo-card="<strong>Las inversiones están garantizadas por el IPAB*</strong><sup>*</sup>"
+                                alineacion="left"
+                                flujo="columna"
+                            ></custom-card-icon>
+                          </div>
+                          <div class="swiper-slide">
+                            <custom-card-icon
+                            icono="img/time.svg"
+                            titulo-card="<strong>El tiempo es tu mejor aliado</strong>"
+                            alineacion="left"
+                            flujo="columna"
+                            ></custom-card-icon>
+                          </div>                   
+                    </div>
+                      <!-- If we need pagination -->
+                    <div class="swiper-beneficios-pagination"></div>
+                </div>
+            </div>
+           
+        </div>
+     
+      </section>
+
+      <custom-legales></custom-legales>
+    </main>
+    <custom-footer></custom-footer>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/home.js"></script>
+    <script type="module" src="./js/layout/promociones.js"></script>
+  </body>
 </html>

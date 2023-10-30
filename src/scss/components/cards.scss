@@ -34,7 +34,7 @@
             font-size: 1rem;
             line-height: 1.5rem;
             margin: 0;
-            font-family: var(--font-family-secondary-regular);
+            font-family: var(--font-secundaria-regular);
         }
 
         .link {
@@ -103,10 +103,10 @@
         h5 {
             text-align: left;
             @include text-sm-18;
-            font-family: var(--font-family-primary-book);
+            font-family: var(--font-primaria-regular);
 
             strong {
-                font-family: var(--font-family-primary-bold);
+                font-family: var(--font-primaria-bold);
             }
         }
     }
@@ -135,7 +135,7 @@
 
     & > h5 {
         text-align: center;
-        font-family: var(--font-family-primary-bold);
+        font-family: var(--font-primaria-bold);
 
         @include text-sm-18;
     }
@@ -143,7 +143,7 @@
     .contenido {
         display: grid;
         row-gap: var(--spacing02);
-        font-family: var(--font-family-secondary-regular);
+        font-family: var(--font-secundaria-regular);
 
         ul {
             padding-left: 20px;
@@ -182,7 +182,7 @@
     }
     p {
         text-align: center;
-        font-family: var(--font-family-secondary-regular);
+        font-family: var(--font-secundaria-regular);
     }
 
     &--stars {
@@ -239,7 +239,7 @@
             @include text-sm-16;
 
             p {
-                font-family: var(--font-family-primary-book);
+                font-family: var(--font-primaria-regular);
                 @include text-md-20;
             }
         }

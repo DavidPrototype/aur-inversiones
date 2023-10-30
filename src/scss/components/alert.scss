@@ -18,7 +18,7 @@
         h4 {
             @include text-sm-18;
             margin: 0 0 8px 0;
-            font-family: var(--font-family-primary-bold);
+            font-family: var( --font-primaria-bold);
         }
 
         .contenido {
@@ -39,7 +39,7 @@
         }
         a {
             text-decoration: underline;
-            font-family: var(--font-family-secondary-bold);
+            font-family: var(--font-secundaria-bold);
             @include text-sm-16;
             color: var(--color-azul300);
             display: block;
