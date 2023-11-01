@@ -8,6 +8,7 @@ import Modal from "bootstrap/js/dist/modal";
 import Header from "./layout/header";
 import Footer from "./layout/footer";
 import AppBanCoppel from "./layout/app-bancoppel";
+import Legales from "./layout/legales";
 
 /* COMPONENTES */
 import Badge from "./components/badge";

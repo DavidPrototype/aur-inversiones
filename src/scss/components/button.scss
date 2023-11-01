@@ -1,3 +1,7 @@
+/* custom-boton {
+    width: max(300px, 100%);
+} */
+
 .btn {
     appearance: none;
     border: 0;
@@ -12,6 +16,7 @@
     width: 100%;
     transition: 0.3s ease-in-out all;
     position: relative;
+    text-decoration: none;
 
     &.primario {
         background: var(--color-azul300);

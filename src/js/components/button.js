@@ -6,12 +6,12 @@ export default class Button extends HTMLElement {
     }
 
     connectedCallback() {
-        let idBoton = this.getAttribute("id-boton");
-        let textButton = this.getAttribute("texto-boton");
+        let id = this.getAttribute("data-id");
+        let texto = this.getAttribute("texto");
         let tipo = this.getAttribute("tipo");
 
         this.innerHTML = `
-              <button class="btn ${tipo}" id='${idBoton}'>${textButton}</buton>`;
+              <button class="btn ${tipo}" id='${id}'>${texto}</buton>`;
     }
 
     attributeChangesCallback(nombreAtr, viejoAtr, nuevoAtr) {}

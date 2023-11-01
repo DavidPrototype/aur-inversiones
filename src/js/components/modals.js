@@ -27,14 +27,13 @@ export default class ModalSalida extends HTMLElement {
                         ></button>
                         <h1 id="modal-salidaLabel">
                             <strong>
-                                Estás a punto de salir del sitio Horas
-                                Azules</strong
+                                Estás a punto de salir del 
+                                Inversiones BanCoppel</strong
                             >
                         </h1>
                         <p>
-                            Serás redirigido al sitio oficial de la promoción que
-                            seleccionaste, el cual es responsable de su propio
-                            contenido y política de privacidad.
+                         Serás redirigido al sitio enlazado. Este sitio es responsable de
+                         su propio contenido y política de privacidad.
                         </p>
                         <a
                             href="${link}"
@@ -43,7 +42,7 @@ export default class ModalSalida extends HTMLElement {
                             id="${idBtn}"
                         >
                             <custom-boton
-                                tipo="secundario"
+                                tipo="secundario-icon"
                                 texto="Continuar"
                             ></custom-boton
                         ></a>

@@ -46,16 +46,18 @@
             .contenido{
 
                 .titulo{
+                    font-family: var(--font-primaria-bold);
                     @include text-md-24;
                 }
                 .subtitulo{
-                    margin: 8px 0;
+                    font-family: var(--font-primaria-bold);
                     @include text-sm-18;
+                    margin: 8px 0;
 
                 }
                 .descripcion{
-                    @include text-sm-16;
                     font-family: var(--font-secundaria-regular);
+                    @include text-sm-16;
                     margin-bottom: 1rem; 
                 }
                 .enlace{
@@ -65,83 +67,147 @@
             }
         }
     }
-    .promociones {
-        padding: var(--spacing08) 0;
-        overflow: hidden;
     
-        &--info {
-            font-family: var(--font-primaria-bold);
+.promociones {
+    padding: 4rem 0;
+    overflow: hidden;
+
+   
+    .custom-container {
+        padding: 0;
+    }
+   
+
+    .row > div:first-child {
+        // border: 1px solid red;
+        padding-right: 36px;
+        padding-left: 36px;
+    }
+
+    &--info {
+        color: var(--color-azul300);
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    .container-carrusel {
+        margin-top: 42px;
+        // padding-right: 0;
+    }
+    &--carrusel {
+        flex-flow: row nowrap;
+        align-items: center;
+        overflow-x: scroll;
+        height: 400px;
+        & div:last-child {
+            margin-right: 10px;
+        }
+    }
+
+    &--card {
+        background: var(--color-azul100);
+        border-radius: 1.5rem;
+        box-shadow: 0px 4px 48px 0px rgba(95, 171, 221, 0.16);
+        position: relative;
+
+        .card--badge {
+            display: flex;
+            gap: 4px;
+            padding: 4px 8px;
+            border-radius: 16px;
+            background: var(--color-amarillo);
             color: var(--color-azul300);
-            @include text-lg-32;
-            
+            width: fit-content;
+            position: absolute;
+            left: 16px;
+            top: -8px;
+
+            .badge--desc {
+                font-family: var(--font-primaria-bold);
+                font-size: 14px;
+                line-height: 14px;
+            }
         }
-    
-        .container-carrusel {
-            margin-top: 42px;
-            // padding-right: 0;
+        .card-body {
+            padding: 32px 24px 0 24px;
         }
-        &--carrusel {
-            flex-flow: row nowrap;
+        .card-title {
+            margin-bottom: 16px;
+        }
+        .card-text {
+            height: 70px;
+            font-family: var(--font-secundaria-regular);
+            color: var(--color-pencil);
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .card-link {
+            font-family: var(--font-secundaria-bold);
+            color: var(--color-azul300);
+            display: inline-block;
+            margin: 24px 0;
+        }
+        .card--img {
+            width: 100%;
+        }
+     }
+    }
+
+    .simuladores{
+        padding: var(--spacing08) 0;
+        &--info{
+            text-align: center;
+            .title-underline{
+                place-items: center;
+                margin-bottom: 24px;
+            }
+            p{
+                margin-bottom: 24px;
+            }
+        }
+        .simuladores--cards{
+            row-gap: 24px;
+            a{
+                text-decoration: none;
+            }
+        }
+        .simulador-card{
+            border-radius: 1rem;
+            background: var(--color-azul300);
+            box-shadow: var(--shadow-flotante);
+            padding: 8px 16px;
+            display: flex;
+            gap:8px;
+            // justify-content: space-between;
             align-items: center;
-            overflow-x: scroll;
-            height: 400px;
-            & div:last-child {
-                margin-right: 10px;
+            
+            .titulo{
+                font-family: var(--font-primaria-bold);
+                @include text-md-24; 
+                color: var(--color-blanco);
             }
-        }
-    
-        &--card {
-            background: var(--color-azul-3);
-            border-radius: 1.5rem;
-            box-shadow: 0px 4px 48px 0px rgba(95, 171, 221, 0.16);
-            position: relative;
-    
-            .card--badge {
-                display: flex;
-                gap: 4px;
-                padding: 4px 8px;
-                border-radius: 16px;
-                background: var(--color-amarillo);
-                color: var(--color-azul-2);
-                width: fit-content;
-                position: absolute;
-                left: 16px;
-                top: -8px;
-    
-                .badge--desc {
-                    font-family: var(--font-primaria-bold);
-                    font-size: 14px;
-                    line-height: 14px;
-                }
-            }
-            .card-body {
-                padding: 32px 24px 0 24px;
-            }
-            .card-title {
-                margin-bottom: 16px;
-            }
-            .card-text {
-                height: 70px;
-                font-family: var(--font-secundaria-regular);
-                color: var(--color-gris-1);
-                font-size: 16px;
-                line-height: 24px;
-            }
-            .card-link {
-                font-family: var(--font-secundaria-bold);
-                color: var(--color-azul-2);
-                display: inline-block;
-                margin: 24px 0;
-            }
-            .card--img {
+            .enlace{
+                display: block;
                 width: 100%;
+                text-align: right;
             }
         }
     }
+
+    
 }
 
 @include media-breakpoint-up(lg) {
+    .main-home {
+        .promociones{
+            .row > div:first-child{
+                // border: 1px solid green;
+                padding-left:64px;
+                padding-right:64px;
+            }
+        }
     
+    }
 }
 
 @include media-breakpoint-up(xl) {
@@ -149,9 +215,24 @@
     .main-home{
 
         .inversion{
-            
+            padding: var(--spacing10) 0;
+            & .row:first-child{
+                justify-content: center;
+            }
+            &--info{
+
+                h2{
+                    @include text-lg-48;
+                 }               
+                 
+                 p{
+                     margin: var(--spacing04) 0 var(--spacing08) 0;
+                     @include text-md-20;
+                     
+                 }
+            }
             &--card{            
-                padding: 2rem 2.5rem;   
+              
                 margin-bottom:0; 
                 flex-direction: row;
                 align-items: center;
@@ -171,7 +252,88 @@
                 }
             }
         }
+        
+        .promociones {
+            padding: 6rem 0;
     
+            .custom-container{
+                padding-left:96px;
+                padding-right:96px;
+            }
+            .row > div:first-child{
+             
+                padding-left:12px;
+                padding-right:12px;
+            }
+            &--info {
+                font-size: 2.9375rem;
+                line-height: 3.1875rem;
+            }
+            .container-carrusel {
+                margin-top: -6.875rem;
+            }
+            &--carrusel {
+                display: grid;
+                gap: 2.5rem;
+                grid-template-columns: repeat(6, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                overflow-x: auto;
+                height: auto;
+    
+                .col-xl-8 {
+                    width: 100%;
+                }
+                div.col-xl-8:first-child {
+                    padding-top: 8rem;
+                }
+                div.col-xl-8:last-child {
+                    padding-bottom: 8rem;
+                }
+                div:nth-child(odd) {
+                    grid-column: 2/4;
+                }
+                div:nth-child(even) {
+                    grid-column: 4/6;
+                }
+            }
+        }
+        .simuladores{
+            padding: 96px 0;
+            &--info{
+               
+                h2{
+                  @include text-lg-48;  
+                }
+                .title-underline{                    
+                    margin-bottom: 24px;
+                }
+                p{
+                    @include text-md-20;
+                    margin-bottom: 64px;
+                }
+            }
+            .simuladores--cards{
+               
+                justify-content: center;
+            }
+            .simulador-card{
+               
+               
+                display: flex;
+                gap:8px;
+                justify-content: space-evenly;
+                align-items: center;
+                
+                .titulo{
+                   
+                    @include text-md-24;                     
+                }
+                
+            }
+        }
+       
+        
+        
         
     
     }

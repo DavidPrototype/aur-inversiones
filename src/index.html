@@ -34,7 +34,7 @@
       <section class="inversion">
         <div class="custom-container">
           <div class="row">
-            <div class="col-12 inversion--info">
+            <div class="col-12 col-xl-10 inversion--info">
               <h2 class="title-underline">
                 Invierte tu dinero sin que pierda valor debajo del colchón
               </h2>
@@ -65,7 +65,7 @@
                   <p class="descripcion">
                     Retira tu dinero cuando lo necesites sin penalizaciones.
                   </p>
-                  <a class="enlace" href="">¿Cuánto crece?</a>
+                  <a class="enlace" href="inversion-creciente.html">¿Cuánto crece?</a>
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
                   <p class="descripcion">
                     Cumple tus metas financieras y elige un plazo para retirar.
                   </p>
-                  <a class="enlace" href="">¿Cuánto gano?</a>
+                  <a class="enlace" href="pagare.html">¿Cuánto gano?</a>
                 </div>
               </div>
             </div>
@@ -108,7 +108,7 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
                   <custom-card
-                    link="promocion-andrea.html"
+                    link="#!"
                     icon="icons/icon-bussines.svg"
                     texto-badge="-10%"
                     titulo="Andrea"
@@ -126,7 +126,7 @@
                     descripcion="Cuida tu salud al comprar con tu tarjeta."
                     imagen="img/home/Imagen-2.jpeg"
                     imagenWebp="img/home/Imagen-2.webp"
-                    link="promocion-vitau.html"
+                    link="#!"
                   ></custom-card>
                 </div>
                 <div class="swiper-slide">
@@ -137,7 +137,7 @@
                     descripcion="Tu tarjeta también te da cupones, ¡Quítate el antojo y disfruta!"
                     imagen="img/burguer-desk.png"
                     imagenWebp="img/burguer-desk.webp"
-                    link="promocion-burguer-king.html"
+                    link="#!"
                   ></custom-card>
                 </div>
                 <div class="swiper-slide">
@@ -148,7 +148,7 @@
                     descripcion="Pizza y descuentos, el plan perfecto con tu tarjeta. "
                     imagen="img/pizza-card.png"
                     imagenWebp="img/pizza-card.webp"
-                    link="promocion-benedettis.html"
+                    link="#!"
                   ></custom-card>
                 </div>
               </div>
@@ -225,14 +225,96 @@
                     <div class="swiper-beneficios-pagination"></div>
                 </div>
             </div>
-           
-        </div>
-     
+
+            <div class="row beneficios-template--mensajes">
+              <div class="col-10 col-lg-11">
+                 <div class="alerta">
+                    <picture class="alerta--imagen">
+                      <source
+                        media="(min-width:768px )"
+                        srcset="img/retail-hogar-4.svg"
+                      />
+                      <img
+                        src="img/tienda.svg"
+                        alt="Imagen Tienda"
+                      />
+                    </picture>
+                    <div class="alerta--contenido">
+                        <p class="titulo">Nuestra prioridad es cuidar tu dinero y ayudarte a crecer </p>
+                        <p class="descripcion">Puedes elegir ambas oportunidades de crecimiento para maximizar tus ganancias.</p>
+                        <p class="descripcion">Acude a <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank">Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank">App BanCoppel*.</a></p>                        
+                    </div>
+                 </div><!-- alerta -->
+                 
+              </div>
+            </div>           
+        </div>     
       </section>
 
+      <section class="simuladores">
+        <div class="custom-container">
+            <div class="row">
+              <div class="col-12 simuladores--info">
+                <h2 class="title-underline">
+                  Prueba los simuladores de inversión
+                </h2>
+                <p>
+                  Descubre cuánto puedes ganar
+                </p>
+              </div>
+            </div>
+            <div class="row simuladores--cards">
+              <div class="col-12 col-lg-6 col-xl-3">
+                <a href="inversion-creciente.html">
+
+                  <div class="simulador-card">
+                          <picture>
+                            <img
+                              src="img/inversion-creciente-2.svg"
+                              alt="Imagen Inversion Creciente"
+                            />
+                          </picture>
+                          <p class="titulo">Inversión Creciente</p>                        
+                          <picture class="enlace">
+  
+                            <img
+                              src="img/right-arrow.svg"
+                              alt="Imagen Flecha Derecha"
+                            />
+                          </picture>
+                          
+                  </div>
+                </a>    
+              </div>
+              <div class="col-12 col-lg-6 col-xl-3">
+                <a href="pagare.html">  
+                <div class="simulador-card">
+                        <picture>
+                          <img
+                            src="img/pagare-2.svg"
+                            alt="Imagen Inversion Creciente"
+                          />
+                        </picture>
+                        <p class="titulo">Pagaré</p>                        
+                        <picture class="enlace">
+
+                          <img
+                            src="img/right-arrow.svg"
+                            alt="Imagen Flecha Derecha"
+                          />
+                        </picture>
+                        
+                    </div>
+                  </a>
+              </div>
+            </div>
+        </div>
+      </section>
+        
       <custom-legales></custom-legales>
     </main>
     <custom-footer></custom-footer>
+    
     <script type="module" src="./js/main.js"></script>
     <script type="module" src="./js/home.js"></script>
     <script type="module" src="./js/layout/promociones.js"></script>
