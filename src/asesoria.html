@@ -17,13 +17,119 @@
     <body>
     
 
-        <custom-header nav-active=""></custom-header>
-        <main class="">
+        <custom-header ></custom-header>
+        <main class="main-asesoria">
         
+            <section>
+                <div class="custom-container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6  envio">
 
-            <custom-legales></custom-legales>
+                            <div class="link-back">
+                                <a href="index.html">
+                                    <img src="icons/icon-arrow-back.svg" alt="Imagen Regresar Pagina" />
+                                    Regresar</a
+                                >
+                            </div>
+                            <div class="headline">
+                                <h2 class="title-underline">
+                                    ¿Listo para invertir?
+                                </h2>
+                                <p>
+                                    Nosotros te guiamos
+                                </p>
+                            </div>
+                            <div class="formulario">
+                                <form >
+                                    <div class="captura-dato">
+                                        <label for="nombre"
+                                            >Nombre completo</label
+                                        >
+    
+                                        <input
+                                            type="text"
+                                            id="nombre"
+                                            placeholder="Ej. Lilia Alcántara Díaz"
+                                        />
+                                        <div class="error error-saldo d-none">
+                                            <img
+                                                src="img/cerrar_circulo.svg"
+                                                alt="icono Cerrar"
+                                            />
+                                            <p class="mensaje"></p>
+                                        </div>
+                                    </div>
+                                    <div class="captura-dato">
+                                        <label for="email"
+                                            >Correo electrónico</label
+                                        >
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            placeholder="Ej. liliaz@gmail.com"
+                                        />
+                                        <div class="error error-pago d-none">
+                                            <img
+                                                src="img/cerrar_circulo.svg"
+                                                alt="icono Cerrar"
+                                            />
+                                            <p class="mensaje"></p>
+                                        </div>
+                                    </div>
+                                    <div class="aviso-privacidad">
+                                        <p>
+                                            Al enviar tus datos aceptas el 
+                                            <a href="#!"> Aviso de Privacidad</a> y los 
+                                            <a href="#!"> Términos y Condiciones</a>
+                                        </p>
+                                    </div>
+                                    <custom-boton
+                                        id="btn-submit"
+                                        tipo="primario"
+                                        texto="Enviar"
+                                        desabilitado="true"
+                                    ></custom-boton>
+                                </form>
+                            </div>
+                        </div>
+                      
+                        <div class="col-12 col-lg-6 alerta-contenido">
+                            <div class=" informacion">
+                                <picture class="informacion-imagen">
+                                    <source
+                                        srcset="img/asesoria.webp"
+                                        type="image/webp"
+                                    />
+                                    <img
+                                        class="w-100"
+                                        src="img/asesoria.jpg"
+                                        alt="image/webp"
+                                    />
+                                </picture>
+                                <div class="informacion-card">
+                                    <p>
+                                        El mejor momento para invertir es hoy
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+           
         </main>
-        <custom-footer></custom-footer>
+            <footer class="footer-asesoria">
+                <div class="custom-container">
+                    <a
+                        href="https://www.bancoppel.com/main/index.html"
+                        target="_blank"
+                    >
+                        <img src="img/Logotipo.svg" alt="Logo BanCoppel" />
+                    </a>
+                    <p class="year">2023</p>
+                </div>
+            </footer>
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/nombre-pagina.js"></script>
     </body>
