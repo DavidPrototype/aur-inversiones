@@ -1,5 +1,15 @@
+.header {
+    .nav {
+        &--menu {
+            display: none;
+        }
+    }
+}
+
 .main-asesoria{
   padding-top: 2rem;
+
+  
   .custom-container{
     padding:0;
     .envio{
@@ -139,7 +149,7 @@
         padding: 2.5rem 0 4rem 0;
         overflow: hidden;
         .custom-container{
-            padding: 0 64px;
+            padding: 0 calc( var(--bs-gutter-x) * 0.5 );
             .row  {
                 align-items: end;
                 position: relative;
@@ -153,6 +163,8 @@
                 right: -64px;
             }
         }
+
+        
 
         .informacion{
             margin-top:0;
@@ -180,15 +192,21 @@
 }
 
 @include media-breakpoint-up(xl) {
+    .header {
+        .nav {
+            &--menu {
+                display: block;
+            }
+        }
+    }
     .main-asesoria{
         overflow: hidden;
         // padding: 2.5rem 0 4rem 0;
         padding:0;
         .custom-container{
-            padding: 0 96px;
-            .row  {
-                align-items: end;
-                position: relative;
+            padding: 0 calc( var(--bs-gutter-x) * 0.5 );
+            .row  {               
+              
                 gap: 64px;
             }
           
@@ -199,26 +217,57 @@
                 padding: 0;
                 position: absolute;
                 right: -96px;
+                top:0;
+                bottom: 0;
             }
+        }
+        .headline{
+            h2{
+                @include text-lg-48;  
+              }
+             
+             
         }
         .formulario{
             width: 70%;
+           
+          
+          
+           
+            .aviso-privacidad{
+                p{
+                    @include text-sm-16;
+                    margin-bottom: 24px;
+                    a{
+                        font-family: var(--font-secundaria-bold);
+                        color:var(--color-azul300);
+                        text-decoration: underline;
+                        
+    
+                    }
+                }
+            } 
         }
         .informacion{
             margin-top:0;
             position: relative;
+            height: 100%;
            
             &-imagen{
                
                 border-radius: 80px 0px 0px 80px;
+                height: 100%;
                
             }
     
             &-card{
-                width: 70%;
+                width: 80%;
                 bottom: 34px;
                 left: -70px;
-               
+                p{
+                     
+                    @include text-lg-36;
+                  }
                 
             }
         }
@@ -234,20 +283,7 @@
       
         .custom-container{
             padding: 0 auto;
-            .row  {
-                align-items: end;
-                position: relative;
-                gap: 64px;
-            }
-          
-            .envio{
-                padding: 2.5rem 0;
-            }
-            .alerta-contenido{
-                padding: 0;
-                position: absolute;
-                right: -96px;
-            }
+           
         }
        
       
