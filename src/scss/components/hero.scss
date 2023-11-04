@@ -73,12 +73,14 @@
     padding: var(--spacing06) 0;
 
     h1 {
-        @include text-md-20;
+        // @include text-md-20;
+        @include text-lg-40;
         color: var(--color-azul300);
     }
 
     p {
-        @include text-lg-36;
+        // @include text-lg-36;
+        @include text-md-20;
         color: var(--color-pencil);
     }
 

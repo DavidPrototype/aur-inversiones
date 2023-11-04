@@ -18,13 +18,311 @@
     
 
         <custom-header nav-active="nav-inversion"></custom-header>
-        <main class="">
-        
+        <main class="main-inversion">
+                <section class="section-hero">
+                    <div class="custom-container">
+                        <div class="row">
+                            <custom-hero
+                                tipo="secundario"
+                                titulo="Inversión Creciente"
+                                subtitulo="Recoge los frutos de tu inversión y cumple tus planes"
+                                texto-boton="Solicitar asesoria"
+                                link-boton="asesoria.html"
+                                imagen="img/hero-inver-creciente.png"
+                                imagen-webp="img/hero-inver-creciente.webp"
+                            >
+                            </custom-hero>
+                        </div>
+                    </div>
+                </section>
+                <section class="beneficios-template" id="beneficios">
+                    <div class="custom-container">
+                        <div class="row">
+                            <div class="col-8 col-xl-4">
+                                <h2  class="title-underline">
+                                    ¡Tan fácil como plantar un árbol!
+                                </h2>
+                              <p class="subtitulo">
+                                Crece tu dinero desde $1,000 pesos.
+                              </p>
+                            </div>
+                            <div class="col-xl-8 beneficios-template--img">
+                                <picture>
+                                    <source
+                                        srcset="img/beneficios.webp"
+                                        type="image/webp"
+                                    />
+                                    <img
+                                        class="w-100"
+                                        src="img/beneficios.png"
+                                        alt="image/webp"
+                                    />
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="row beneficios-template--cards">
+                          <!-- Slider main container -->
+                            <div class="swiper-beneficios col-xl-12">
+                                <div class="swiper-wrapper">
+                                      <!-- Slides -->
+                                      <div class="swiper-slide">
+                                        <custom-card-icon
+                                            icono="img/wallet.svg"
+                                            titulo-card="<strong>Obtén tus ganancias directamente en tu Cuenta Efectiva Digital<strong>"
+                                            alineacion="left"
+                                            flujo="columna"
+                                        ></custom-card-icon>
+                                      </div>
+                                      <div class="swiper-slide">
+                                        <custom-card-icon
+                                        icono="img/dinero-2.svg"
+                                        titulo-card="<strong>Reinvierte en automático hasta por 3 años</strong>"
+                                        alineacion="left"
+                                        flujo="columna"
+                                        ></custom-card-icon>
+                                      </div>
+                                      <div class="swiper-slide"> 
+                                        <custom-card-icon
+                                            icono="img/dinero-bolsa.svg"
+                                            titulo-card="<strong>Usa tu inversión cuando lo necesites, sin penalizaciones</strong>"
+                                            alineacion="left"
+                                            flujo="columna"
+                                        ></custom-card-icon>
+                                      </div>
+                                      <div class="swiper-slide">
+                                        <custom-card-icon
+                                        icono="img/dinero-porcentaje.svg"
+                                        titulo-card="<strong>Recibe una tasa creciente mes con mes </strong>"
+                                        alineacion="left"
+                                        flujo="columna"
+                                        ></custom-card-icon>
+                                      </div>                   
+                                </div>
+                                  <!-- If we need pagination -->
+                                <div class="swiper-beneficios-pagination"></div>
+                            </div>
+                        </div>
+            
+                        <div class="row beneficios-template--mensajes">
+                          <div class="col-10 col-lg-11">
+                             <div class="alerta">
+                                <picture class="alerta--imagen">
+                                  <!-- <source
+                                    media="(min-width:768px )"
+                                    srcset="img/retail-hogar-4.svg"
+                                  /> -->
+                                  <img
+                                    src="img/foms.svg"
+                                    alt="Imagen Tienda"
+                                  />
+                                </picture>
+                                <div class="alerta--contenido">
+                                    <p class="titulo">¡Gana un premio! </p>
+                                    <p class="descripcion">Invierte un año para recibir rendimientos más altos.</p>
+                                                           
+                                </div>
+                             </div><!-- alerta -->
+                             
+                          </div>
+                        </div> 
+                        <div class="row justify-content-center beneficios-template--links">
+                            <div class="col-6 text-center">
+                                <a href="#!">Conoce mas</a>
+                            </div>
+                        </div>          
+                    </div>     
+                </section>
+
+                <section class="inverion-formulario">
+                    <div class="custom-container">
+                        <div class="row headline">
+                            <div class="col-12 col-lg-8 headline-title">
+                                <h2>
+                                    Descubre cuánto 
+                                    aumenta tu dinero 
+                                    con<span> Inversión
+                                    Creciente<span></span>
+                                </h2>
+                            </div>
+                            <div class="col-12 col-lg-4 headline-imagen">
+                                <img src="img/img-inversion-creciente.svg" alt="Imagen Inversion Creciente">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center" id="row-calculadora">
+                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--entrada">
+                                <div class="inverion-formulario--simulador">
+                                    
+                                    <p>
+                                        Ingresa los datos
+                                    </p>
+                                    <form class="inverion-formulario--formulario">
+                                        <div class="captura-saldo">
+                                            <label for="saldo-pendiente"
+                                                >Saldo mensual pendiente</label
+                                            >
+    
+                                            <input
+                                                type="text"
+                                                id="saldo-pendiente"
+                                                placeholder="$0.00"
+                                            />
+                                            <div class="error error-saldo d-none">
+                                                <img
+                                                    src="img/cerrar_circulo.svg"
+                                                    alt="icono Cerrar"
+                                                />
+                                                <p class="mensaje"></p>
+                                            </div>
+                                        </div>
+                                        <div class="captura-saldo">
+                                            <label for="pago"
+                                                >¿Durante cuánto tiempo?</label
+                                            >
+                                           
+                                                <select  id="">
+                                                    <option value="0" selected >Seleccionar</option>
+                                                    <option value="1">1 mes</option>
+                                                    <option value="2">2 meses</option>
+                                                    <option value="3">3 meses</option>
+                                                    <option value="4">4 meses</option>
+                                                    <option value="6">6 meses</option>
+                                                    <option value="7">7 meses</option>
+                                                    <option value="8">8 meses</option>
+                                                    <option value="9">9 meses</option>
+                                                    <option value="10">10 meses</option>
+                                                    <option value="11">11 meses</option>
+                                                    <option value="12">12 meses</option>
+                                                </select>
+                                            
+                                            <div class="error error-pago d-none">
+                                                <img
+                                                    src="img/cerrar_circulo.svg"
+                                                    alt="icono Cerrar"
+                                                />
+                                                <p class="mensaje"></p>
+                                            </div>
+                                        </div>
+                                        <div class="advertencia">                                           
+    
+                                            <p>
+                                                <a href="#!">
+                                                    Para conocer la GAT: Consulta las
+                                                    tasas de Inversión Creciente
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <custom-boton
+                                            id="btn-submit"
+                                            tipo="primario"
+                                            texto="Calcular"
+                                            desabilitado="true"
+                                        ></custom-boton>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salid">
+                                <div class="inverion-formulario--resultados">
+                                    <div class="datos-entrada">
+                                        
+                                        <p  class="datos-entrada--periodo">
+                                         Monto al final de 
+                                            <span id="entrada-inversion">
+                                                12 meses 
+                                            </span> 
+                                        </p>
+                                        <p class="datos-entrada--monto">
+                                            $11,013.89
+                                        </p>
+                                        <p class="datos-entrada--aclaracion">
+                                            Las cantidades mostradas son ejemplos con fines informativos e 
+                                            ilustrativos y no representan ninguna 
+                                            línea de crédito específica. 
+                                        </p>
+                                    </div>
+                                    <div class="detalles">
+                                        
+                                        <div class="detalle">
+                                            
+                                            <p class="detalle-descripcion">
+                                                Después de 12 meses, tendrás
+                                            </p>
+                                            <p class="detalle-cantidad" id="">
+                                                $10,586.26
+                                            </p>
+                                          
+                                            <p class="detalle-descripcion">
+                                                +Premio por llegar a la meta
+                                            </p>
+                                            <p
+                                                class="detalle-cantidad"
+                                                id=""
+                                            >
+                                            $427.62
+                                            </p>
+                                            <p class="detalle-descripcion">
+                                                -ISR
+                                            </p>
+                                            <p
+                                                class="detalle-cantidad"
+                                                id=""
+                                            >
+                                                $0.00
+                                            </p>
+                                            <hr class="detalle-separador" />
+                                            <p class="detalle-descripcion">
+                                                Tasa de rendimiento
+                                            </p>
+                                            <p
+                                                class="detalle-cantidad"
+                                                id=""
+                                            >
+                                            10.00%
+                                            </p>
+                                            <p class="detalle-descripcion">
+                                                GAT Nominal
+                                            </p>
+                                            <p
+                                                class="detalle-cantidad"
+                                                id=""
+                                            >
+                                             10.00%
+                                            </p>
+                                            <p class="detalle-descripcion">
+                                                GAT Real
+                                            </p>
+                                            <p
+                                                class="detalle-cantidad"
+                                                id=""
+                                            >
+                                            5.16%
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+    
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-9 col-xl-8">
+                                <div class="inverion-formulario--fecha">
+                                    <custom-alert
+                                        icono="img/retail-hogar-4.svg"
+                                        titulo-alert="hide"
+                                        texto-alert="<p>Una vez que inviertes no tendrás que realizar más depósitos a tu Inversión Creciente.</p>"
+                                    >
+                                    </custom-alert>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             <custom-legales></custom-legales>
         </main>
         <custom-footer></custom-footer>
         <script type="module" src="./js/main.js"></script>
-        <script type="module" src="./js/nombre-pagina.js"></script>
+        <script type="module" src="./js/inversion-creciente.js"></script>
     </body>
 </html>

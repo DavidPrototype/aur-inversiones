@@ -15,7 +15,7 @@ import Badge from "./components/badge";
 import Button from "./components/button";
 import Card from "./components/cards";
 import Hero from "./components/hero";
-import HeroSecundario from "./components/hero";
+// import HeroSecundario from "./components/hero";
 import Alert from "./components/alert";
 import Accordion from "./components/accordion";
 import ModalSalida from "./components/modals";

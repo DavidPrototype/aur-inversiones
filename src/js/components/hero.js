@@ -83,7 +83,7 @@ export default class Hero extends HTMLElement {
                                   linkButton +
                                   '"><custom-boton id-boton="' +
                                   idBoton +
-                                  '" tipo="secundario" value="' +
+                                  '" tipo="primario" texto="' +
                                   textButton +
                                   '"><custom-boton></a>'
                         }

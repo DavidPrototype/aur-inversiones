@@ -14,8 +14,16 @@ export default class Alert extends HTMLElement {
                     <img src="${icono}" alt="Icono Idea" />
                 </picture>
                 
-                <div class="contenido"><h4 class="strong-circular">${titulo}</h4>${texto}</div>
-            </div>
+                <div class="contenido">
+                ${
+                    titulo == "hide"
+                    ? ""
+                    :'<h4 class="strong-circular">'+titulo+'</h4>'
+                }
+                   
+                    ${texto}
+                </div>
+          </div>
         `;
     }
 }
