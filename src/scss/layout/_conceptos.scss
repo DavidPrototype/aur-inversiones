@@ -1,7 +1,7 @@
 .conceptos {
     padding: var(--spacing08) 0;
     border-radius: var(--radius-xl);
-    background: var(--color-azul100);
+    background: var(--color-blanco);
 
     /* .custom-container > .row {
         display: flex;
@@ -29,6 +29,10 @@
                     height: auto;
                 }
             }
+            .swiper-pagination{
+                display: none;
+            }
+            
         }
     }
 
@@ -50,6 +54,9 @@
                 width: 100%;
                 padding: 0;
             }
+            .swiper-pagination{
+                display: none;
+            }
         }
     }
 
@@ -69,6 +76,7 @@
         p {
             @include text-sm-18;
             text-align: center;
+            margin-bottom: 24px;
         }
     }
 
@@ -80,6 +88,10 @@
                 flex-flow: row wrap;
                 height: auto;
             }
+        }
+
+        .card{
+            background:var(--color-azul100) ;
         }
     }
 
@@ -122,6 +134,18 @@
                         width: 196px;
                     }
                 }
+                .swiper-pagination{
+                    display: block;
+                }
+               
+            }
+           
+        }
+        &--info {
+           
+            p {
+               
+                margin-bottom: 48px;
             }
         }
 
@@ -133,11 +157,25 @@
 
 @include media-breakpoint-up(xl) {
     .conceptos {
+        &--info {
+            h2{
+                @include text-lg-48;
+            }
+    
+            p {
+                @include text-md-20;
+                margin-bottom: 48px;
+            }
+        }
+
         .conceptos__image {
             display: flex;
             /* flex: 0 1 531px; */
         }
-
+        &-container-swiper{
+            padding: 0 96px;
+        
+        }
         .swiper {
             .swiper-wrapper {
                 margin-bottom: var(--spacing08);
@@ -163,6 +201,9 @@
                             width: auto;
                         }
                     }
+                }
+                .swiper-pagination{
+                    display: none;
                 }
             }
         }
