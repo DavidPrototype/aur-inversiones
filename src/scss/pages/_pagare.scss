@@ -1,5 +1,4 @@
-.main-inversion{
-       
+.main-pagare{
     
     .beneficios-template{
         margin-bottom: -40px;
@@ -8,7 +7,6 @@
         .subtitulo {           
             visibility: visible;
         }
-
         &--links{
             margin-top: 24px;
 
@@ -18,11 +16,13 @@
                 color: var(--color-azul300);
             }
         }
-    }
 
+       
+    }
     .inverion-formulario{
        
         padding: 96px 0 40px 0;
+      
         background-color: var(--color-azul300);
         overflow: hidden;
 
@@ -234,13 +234,22 @@
             margin-top: 1.5rem;
         }
     }
-
-    
+    .requisitos{
+        margin-top: -40px;
+        position: relative;
+        z-index: 9;
+    }
 }
 
 @include media-breakpoint-up(lg) {
 
-    .main-inversion{
+    .main-pagare{
+
+        .beneficios-template{
+            &--cards .card {
+                height: 175px;
+            }
+        }
         .inverion-formulario{
        
             padding: 96px 0 ;
@@ -283,7 +292,12 @@
 
 @include media-breakpoint-up(xl) {
 
-    .main-inversion{
+    .main-pagare{
+        .beneficios-template{
+            &--cards .card {
+                height: 254px;
+            }
+        }
         .inverion-formulario{
        
             padding: 96px 0 ;
