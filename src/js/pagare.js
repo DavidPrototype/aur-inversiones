@@ -21,11 +21,11 @@ const simulador = document.querySelector('.inverion-formulario--simulador');
 const salidaSimulador= document.querySelector('.inverion-formulario--salida');
 const slides = document.querySelectorAll(".main-pagare .conceptos .swiper-slide").length;
 let swiperBeneficiosPagare, mySwiperPagare;
-console.log(slides)
+// console.log(slides)
 const breakpointChecker = function () {
     if (breakpoint.matches === false) {
         if (mediaqueryMobile.matches === false) {
-            console.log("movil");
+            // console.log("movil");
             // if (slides > 3) {
             //     console.log("3+");
             //     return enableSwiper();
@@ -135,7 +135,9 @@ breakpointChecker();
 ordenSlides();
 
 const ayudaElem = document.getElementById('ayuda-tooltip')
-const tooltip = new Tooltip(ayudaElem)
+const tooltip = new Tooltip(ayudaElem);
+
+console.log(tooltip)
 
 $(".js-range-slider").ionRangeSlider({
     skin: "round",
@@ -161,12 +163,12 @@ let msgErrorSaldo = document.querySelector(".error-inversion .mensaje");
 let msgErrorTiempo = document.querySelector(".error-tiempo .mensaje");
 
 let miInversion = 0;
-const fechaInversion  = new Date(); 
+let fechaInversion  = new Date(); 
 let year= fechaInversion.getFullYear();
 let month= String(fechaInversion.getMonth()+1).padStart(2,"0");
 let day=fechaInversion.getDate(); 
 let currentDate = `${day}/${month}/${year}`; 
-console.log("The current date is " + currentDate); 
+// console.log("The current date is " + currentDate); 
 
 /// NUMEROS
 let regExNumber = /^[0-9$,.]+$/;
@@ -238,13 +240,13 @@ document
             
         }else{
            
-            calcular_inversion(miInversion,inputTiempo.value);
+            calcular_inversion_pagare(miInversion,inputTiempo.value);
         }
        
        
     });
 
-    function calcular_inversion(miInversion,plazo){
+    function calcular_inversion_pagare(miInversion,plazo){
        
         plazo = parseInt(plazo);       
         
@@ -253,7 +255,7 @@ document
 
         const tablaGats =gats.filter((elem) => elem[0] == plazo ) 
         const datosGats = tablaGats[0];
-        console.log(datosGats)
+        // console.log(datosGats)
 
         // let plazoHasta = datosTabla[1];
         // let plazoHasta = 0;
@@ -266,13 +268,15 @@ document
         let calculoISR =0;
         let gatNominal = datosGats[2];
         let gatReal = datosGats[3];
-
-        fechaInversion.setDate(fechaInversion.getDate() + plazo);
-        console.log(fechaInversion)
-        let month= String(fechaInversion.getMonth()+1).padStart(2,"0");
-        let day=fechaInversion.getDate(); 
-        let fechaVencimiento = `${day}/${month}/${year}`; 
-        console.log("Fecha Vencimiento " + fechaVencimiento); 
+        let fechaVencimiento = new Date();
+        let fecha_vence ='';
+        fechaVencimiento.setDate(fechaVencimiento.getDate() + plazo);
+        // console.log(fechaVencimiento)
+        let month= String(fechaVencimiento.getMonth()+1).padStart(2,"0");
+        let day=fechaVencimiento.getDate(); 
+        let year =fechaVencimiento.getFullYear();
+        fecha_vence = `${day}/${month}/${year}`; 
+        // console.log("Fecha Vencimiento " + fecha_vence); 
 
         interesBruto = miInversion * (tasa/360) * plazo;
         subtotal = interesBruto + miInversion;
@@ -282,7 +286,7 @@ document
 
         // console.log(miInversion,interesBruto, gatNominal, gatReal);
 
-        mostrar_detalle_pagare(montoFinal,miInversion,plazo,tasa,calculoISR,gatNominal, gatReal,fechaVencimiento);
+        mostrar_detalle_pagare(montoFinal,miInversion,plazo,tasa,calculoISR,gatNominal, gatReal,fecha_vence);
         
     }
 
