@@ -24,7 +24,7 @@ export default class Header extends HTMLElement {
                 <div class="nav--menu custom-container">
                         <ul class="menu font-secondary">
                             <li class="menu__item" id="nav-inicio"><a href="index.html">Inicio</a></li>
-                            <li class="menu__item" id="nav-inversion"><a href="inversion-creciente.html">Inversión Creciente</a></li>
+                            <li class="menu__item" id="nav-inversion"><a href="inversioncreciente.html">Inversión Creciente</a></li>
                             <li class="menu__item" id="nav-pagare"><a href="pagare.html">Pagaré</a></li>
                             
                         </ul>

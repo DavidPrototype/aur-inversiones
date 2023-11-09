@@ -67,9 +67,9 @@ export class CardIcon extends HTMLElement {
                     ${
                         flujo == "fila"
                             ? '<div class="contenido"><h5>' + titulo + "</h5>"
-                            : '<div class="contenido"><h5><strong>' +
+                            : '<div class="contenido"><h5>' +
                               titulo +
-                              "</strong></h5>"
+                              "</h5>"
                     }
                    
                     ${contenido == null ? "" : contenido} 

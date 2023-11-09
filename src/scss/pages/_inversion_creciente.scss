@@ -8,6 +8,13 @@
         .subtitulo {           
             visibility: visible;
         }
+        &--cards{
+            .card{
+                h5 strong{
+                    font-family: var(--font-primaria-regular);
+                }
+            }
+        }
 
         &--links{
             margin-top: 24px;

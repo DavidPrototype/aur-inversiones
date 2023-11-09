@@ -165,7 +165,7 @@ document
     .addEventListener("input", (event) => {
         alertErrorInversion.classList.add("d-none");
         //miInversion = parseFloat(event.target.value);
-
+         
         if (event.target.value.length < 1 || isNaN(event.target.value.length)) {
             alertErrorInversion.classList.remove("d-none");
             msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";

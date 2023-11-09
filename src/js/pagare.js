@@ -137,7 +137,7 @@ ordenSlides();
 const ayudaElem = document.getElementById('ayuda-tooltip')
 const tooltip = new Tooltip(ayudaElem);
 
-console.log(tooltip)
+// console.log(tooltip)
 
 $(".js-range-slider").ionRangeSlider({
     skin: "round",
