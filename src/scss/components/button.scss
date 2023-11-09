@@ -21,6 +21,14 @@
     &.primario {
         background: var(--color-azul300);
         color: var(--color-blanco);
+
+        &:disabled, &:disabled:hover{
+            background:var( --color-azul-5);
+        }
+
+        &:hover{
+            background: var(--primary-extended-azul-500);
+        }
     }
 
     &.secundario {

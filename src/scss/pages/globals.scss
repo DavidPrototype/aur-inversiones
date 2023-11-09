@@ -78,7 +78,9 @@
             background: var(--color-amarillo300);
         }
     }
-
+    .link-nodecoration{
+        text-decoration: none;
+    }
     .link-back {
         a {
             @include text-sm-16;

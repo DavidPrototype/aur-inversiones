@@ -30,13 +30,15 @@
                    @include text-sm-18;
                    text-align: center;
                }
-        } 
+        }
+       
         &--card{
             background: var(--color-azul300);
             padding: var(--spacing04);
             border-radius: var(--radius-lg);
             margin-bottom: 1.5rem;
-            color:var(--color-blanco);
+            color:var(--color-blanco);            
+            transition: all 0.3s ease-in-out;
             display: flex;
             flex-direction: column;
             gap: 1rem;
@@ -72,6 +74,10 @@
                     font-family: var(--font-secundaria-bold);
                 }
             }
+        }
+        &--card:hover{
+            cursor: pointer;
+            background:var(--primary-extended-azul-500) ;
         }
     }
     
@@ -182,6 +188,7 @@
             border-radius: 1rem;
             background: var(--color-azul300);
             box-shadow: var(--shadow-flotante);
+            transition: all 0.3s ease-in-out;
             padding: 8px 16px;
             display: flex;
             gap:8px;
@@ -198,6 +205,9 @@
                 width: 100%;
                 text-align: right;
             }
+        }
+        .simulador-card:hover{
+            background: var(--primary-extended-azul-500);
         }
     }
 

@@ -1,5 +1,5 @@
 .main-inversion{
-       
+       overflow: hidden;
     
     .beneficios-template{
         margin-bottom: -40px;
@@ -131,6 +131,143 @@
                 padding: 12px 16px;
                 width: 100%;
             }
+            custom-select-wrapper {
+                position: relative;
+                margin-bottom: 90px;
+                display: block;
+            }
+            
+            .custom-select-wrapper select {
+                display: none;
+                overflow: hidden;
+                width: 100%;
+            }
+            
+            .custom-select {
+                position: relative;
+                display: block;	
+            }
+            
+            .custom-select-trigger {
+                position: relative;	
+                padding: 0;
+                display: block;
+                overflow: hidden;
+                width: 100%;	
+                border: 1px solid #9B9A98;
+                border-radius: 10px;
+                background-color: #fff;
+                font-size: 16px;
+                line-height: 24px;
+                color: #777673;
+                cursor: pointer;
+            }
+            
+            .custom-select-trigger:after {
+                position: absolute;
+                display: block;
+                content: '';
+                width: 10px;
+                height: 10px;
+                top: 50%;
+                right: 20px;
+                margin-top: -0.13636363em;
+                border-bottom: 1px solid var(--color-azul300);
+                border-right: 1px solid var(--color-azul300);
+                -webkit-transform: rotate(45deg) translateY(-50%);
+                -ms-transform: rotate(45deg) translateY(-50%);
+                transform: rotate(45deg) translateY(-50%);
+                -webkit-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+                -webkit-transform-origin: 50% 0;
+                -ms-transform-origin: 50% 0;
+                transform-origin: 50% 0;
+            }
+            
+            .custom-select.opened .custom-select-trigger:after {
+                margin-top: 0.13636363em;
+                -webkit-transform: rotate(-135deg) translateY(-50%);
+                -ms-transform: rotate(-135deg) translateY(-50%);
+                transform: rotate(-135deg) translateY(-50%);
+            }
+            
+            .custom-select-trigger-text {
+                position: relative;
+                top: 0;	
+                padding: 12px 16px;
+                display: inline-block;
+                // overflow: hidden;
+                // height: auto;	
+                color: var(--neutral-gris-400);
+            }
+            
+            .custom-options {
+               
+                position: absolute;
+               
+                top: 100%;
+                right: 0;
+                left: 0;
+                margin: 0;
+                display: none;
+                min-width: 100%;	
+                border: 1px solid #ececec;
+                border-radius: 10px;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 3px 2px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
+                -webkit-transition: all .4s ease-in-out;	
+                opacity: 0;
+                z-index: 10;
+                transition: all .4s ease-in-out;
+            }
+            
+            .custom-options:before {
+                position: absolute;
+                display: block;
+                content: '';
+                top: -0.22727272em;
+                right: 25px;
+                width: 7px;
+                height: 7px;
+                margin-bottom: -0.18181818em;
+                border-top: 1px solid #ececec;
+                border-left: 1px solid #ececec;
+                background: #fff;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                -webkit-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+            }
+            
+            .option-hover:before {
+                background: #f9f9f9;
+            }
+            
+            .custom-option {
+                position: relative;
+                display: block;
+                padding: 4px;
+                border-bottom: 1px solid #ececec;
+                font-size: 1em;
+                color: #333333;
+                cursor: pointer;
+                -webkit-transition: all .25s ease-in-out;
+                transition: all .25s ease-in-out;
+            }
+            
+            .custom-option:last-of-type {
+                border-bottom: 0;
+                border-radius: 10px;
+            }
+            
+            .custom-option.selection:hover,
+            .custom-option:hover {
+                background: #F1F4FA
+            }
            
             .error {
                 display: flex;
@@ -156,6 +293,14 @@
                 }
             }
         }
+
+        // &--simulador.border-movil{
+        //     border-radius: 24px;
+        // }
+        &--simulador.resultados{
+            border-radius: 24px 24px 0 0;
+        }
+        
     
         &--resultados {
             border-radius:  0px 0px 24px 24px;
@@ -297,11 +442,11 @@
                     position: static;
                 }
             }
-            &--entrada{
+            &--entrada.resultados{
                 flex-basis:30%;//hacerlo con js 
                 padding: 0;
             }
-            &--salida{
+            &--salida.resultados{
                 flex:3 0 auto;
                 padding: 0;
             }
@@ -313,10 +458,15 @@
                 }
             }
 
+            &--simulador.resultados{
+                border-radius: 24px 0 0 24px;
+            }
+
             &--resultados{
                flex-direction: row;
                border-radius: 0 24px 24px 0;
                padding: 64px 40px;
+            //    transition: all ease-in-out 3s;
                .datos-entrada{
                 flex-basis: 50%;
                 padding:0;

@@ -6,9 +6,11 @@
         
 
         <title>Inversiones BanCoppel | Pagare</title>        
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
 
        
 
@@ -108,35 +110,33 @@
                     <div class="row headline">
                         <div class="col-12 col-lg-8 headline-title">
                             <h2>
-                                Descubre cuánto 
-                                aumenta tu dinero 
-                                con<span> Inversión
-                                Creciente<span></span>
+                                Descubre cuánto puedes ganar con
+                                <span> Pagaré</span>
                             </h2>
                         </div>
                         <div class="col-12 col-lg-4 headline-imagen">
-                            <img src="img/img-inversion-creciente.svg" alt="Imagen Inversion Creciente">
+                            <img src="img/img-pagare.svg" alt="Imagen Inversion Creciente">
                         </div>
                     </div>
                     <div class="row justify-content-center" id="row-calculadora">
                         <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--entrada">
-                            <div class="inverion-formulario--simulador">
+                            <div class="inverion-formulario--simulador border-movil">
                                 
                                 <p>
                                     Ingresa los datos
                                 </p>
                                 <form class="inverion-formulario--formulario">
                                     <div class="captura-saldo">
-                                        <label for="saldo-pendiente"
-                                            >Saldo mensual pendiente</label
+                                        <label for="mi-inversion-pagare"
+                                            >¿Cuánto quieres invertir?</label
                                         >
 
                                         <input
                                             type="text"
-                                            id="saldo-pendiente"
+                                            id="mi-inversion-pagare"
                                             placeholder="$0.00"
                                         />
-                                        <div class="error error-saldo d-none">
+                                        <div class="error error-inversion d-none">
                                             <img
                                                 src="img/cerrar_circulo.svg"
                                                 alt="icono Cerrar"
@@ -145,26 +145,26 @@
                                         </div>
                                     </div>
                                     <div class="captura-saldo">
-                                        <label for="pago"
+                                        <label for="tiempo"
                                             >¿Durante cuánto tiempo?</label
                                         >
                                        
-                                            <select  id="">
-                                                <option value="0" selected >Seleccionar</option>
-                                                <option value="1">1 mes</option>
-                                                <option value="2">2 meses</option>
-                                                <option value="3">3 meses</option>
-                                                <option value="4">4 meses</option>
-                                                <option value="6">6 meses</option>
-                                                <option value="7">7 meses</option>
-                                                <option value="8">8 meses</option>
-                                                <option value="9">9 meses</option>
-                                                <option value="10">10 meses</option>
-                                                <option value="11">11 meses</option>
-                                                <option value="12">12 meses</option>
-                                            </select>
-                                        
-                                        <div class="error error-pago d-none">
+                                        <!-- <input type="range" class="form-range"  min="28" max="360" id="tiempo" list="markers" />
+                                        <datalist id="markers" style="height: 0;">
+                                            <option value="28"></option>
+                                            <option value="120"></option>
+                                            <option value="210"></option>
+                                            <option value="360"></option>
+                                            
+                                        </datalist>
+                                        <div class="rango-valores">
+                                            <span>28</span>
+                                            <span>120</span>
+                                            <span>210</span>
+                                            <span>360</span>                            
+                                        </div> -->
+                                        <input type="text" id="tiempo" class="js-range-slider" name="my_range" value="" />
+                                        <div class="error error-tiempo d-none">
                                             <img
                                                 src="img/cerrar_circulo.svg"
                                                 alt="icono Cerrar"
@@ -172,6 +172,7 @@
                                             <p class="mensaje"></p>
                                         </div>
                                     </div>
+                                    
                                     <div class="advertencia">                                           
 
                                         <p>
@@ -185,7 +186,7 @@
                                         </p>
                                     </div>
                                     <custom-boton
-                                        id="btn-submit"
+                                        id="btn-pagare"
                                         tipo="primario"
                                         texto="Calcular"
                                         desabilitado="true"
@@ -193,19 +194,40 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida">
+                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida d-none">
                             <div class="inverion-formulario--resultados">
                                 <div class="datos-entrada">
                                     
                                     <p  class="datos-entrada--periodo">
                                      Monto al final de 
-                                        <span id="entrada-inversion">
-                                            12 meses 
+                                        <span id="entrada-plazo">
+                                            360 dias 
                                         </span> 
                                     </p>
-                                    <p class="datos-entrada--monto">
+                                    <p class="datos-entrada--monto" id="salida-montoFinal">
                                         $11,013.89
                                     </p>
+                                    <div class="grafico">
+                                        <div class="grafico-info">
+
+                                            <div class="grafico-montos">
+                                                <span class="monto-inicial" id="mi-inversion">$10007.87</span>
+                                                <div class="monto-final">
+                                                    <p class="titulo">Monto máximo</p>
+                                                    <p class="cantidad">$10,361.74</p>
+                                                </div>
+                                            </div>
+                                            <div class="grafico-imagen">
+                                                    <img src="img/grafico-pagare.svg" alt="" class="w-100">
+                                                   
+                                            </div>
+                                        </div>
+                                        <div class="grafico-rangos">
+                                            <span class="rango-inicial">28 días</span>
+                                            <span class="rango-final">360 días</span>
+                                        </div>
+
+                                    </div>
                                     <p class="datos-entrada--aclaracion">
                                         Las cantidades mostradas son ejemplos con fines informativos e 
                                         ilustrativos y no representan ninguna 
@@ -214,33 +236,28 @@
                                     <p class="datos-entrada--link">
                                         <a href="asesoria.html">Solicitar asesoría</a>
                                     </p>
+                                   
                                 </div>
                                 <div class="detalles">
                                     
                                     <div class="detalle">
                                         
                                         <p class="detalle-descripcion">
-                                            Después de 12 meses, tendrás
+                                            Después de 
+                                            <span id="detalle-plazo">12 meses</span>
+                                            , tendrás
                                         </p>
-                                        <p class="detalle-cantidad" id="">
+                                        <p class="detalle-cantidad" id="detalle-montoFinal" >
                                             $10,586.26
                                         </p>
                                       
-                                        <p class="detalle-descripcion">
-                                            +Premio por llegar a la meta
-                                        </p>
-                                        <p
-                                            class="detalle-cantidad premio"
-                                            id=""
-                                        >
-                                        $427.62
-                                        </p>
+                                        
                                         <p class="detalle-descripcion">
                                             -ISR
                                         </p>
                                         <p
                                             class="detalle-cantidad"
-                                            id=""
+                                            id="isr"
                                         >
                                             $0.00
                                         </p>
@@ -250,7 +267,7 @@
                                         </p>
                                         <p
                                             class="detalle-cantidad"
-                                            id=""
+                                            id="detalle-tasa"
                                         >
                                         10.00%
                                         </p>
@@ -259,7 +276,7 @@
                                         </p>
                                         <p
                                             class="detalle-cantidad"
-                                            id=""
+                                            id="gat-nominal"
                                         >
                                          10.00%
                                         </p>
@@ -268,9 +285,17 @@
                                         </p>
                                         <p
                                             class="detalle-cantidad"
-                                            id=""
+                                            id="gat-real"
                                         >
                                         5.16%
+                                        </p>
+                                        <p class="detalle-descripcion">
+                                            Fecha de vencimiento
+                                        </p>
+                                        <p class="detalle-cantidad fecha-vencimiento">
+                                            <span id="fecha-vence">18/08/2024</span> 
+                                            <span id="ayuda-tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Cálculo de la fecha en que termina tu plazo de inversión "><img src="img/ayuda.svg" alt="Icono de Ayuda"></span> 
+                                          
                                         </p>
                                     </div>
                                     
@@ -280,18 +305,7 @@
                     </div>
                     
 
-                    <!-- <div class="row justify-content-center">
-                        <div class="col-12 col-lg-9 col-xl-8">
-                            <div class="inverion-formulario--fecha">
-                                <custom-alert
-                                    icono="img/retail-hogar-4.svg"
-                                    titulo-alert="hide"
-                                    texto-alert="<p>Una vez que inviertes no tendrás que realizar más depósitos a tu Inversión Creciente.</p>"
-                                >
-                                </custom-alert>
-                            </div>
-                        </div>
-                    </div> -->
+                  
                 </div>
             </section>
             <section class="requisitos">
@@ -498,5 +512,6 @@
         <custom-footer></custom-footer>
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/pagare.js"></script>
+       
     </body>
 </html>

@@ -9,7 +9,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
        
 
       
@@ -150,23 +150,23 @@
                         </div>
                         <div class="row justify-content-center" id="row-calculadora">
                             <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--entrada">
-                                <div class="inverion-formulario--simulador">
+                                <div class="inverion-formulario--simulador border-movil">
                                     
                                     <p>
                                         Ingresa los datos
                                     </p>
                                     <form class="inverion-formulario--formulario">
                                         <div class="captura-saldo">
-                                            <label for="saldo-pendiente"
-                                                >Saldo mensual pendiente</label
+                                            <label for="mi-inversion"
+                                                >¿Cuánto quieres invertir?</label
                                             >
     
                                             <input
                                                 type="text"
-                                                id="saldo-pendiente"
+                                                id="mi-inversion"
                                                 placeholder="$0.00"
                                             />
-                                            <div class="error error-saldo d-none">
+                                            <div class="error error-inversion d-none">
                                                 <img
                                                     src="img/cerrar_circulo.svg"
                                                     alt="icono Cerrar"
@@ -175,16 +175,32 @@
                                             </div>
                                         </div>
                                         <div class="captura-saldo">
-                                            <label for="pago"
+                                            <label for="tiempo"
                                                 >¿Durante cuánto tiempo?</label
                                             >
                                            
-                                                <select  id="">
-                                                    <option value="0" selected >Seleccionar</option>
+                                                <!-- <select class="form-select" id="tiempo" >
+                                                    <option value="" selected >Seleccionar</option>
                                                     <option value="1">1 mes</option>
                                                     <option value="2">2 meses</option>
                                                     <option value="3">3 meses</option>
                                                     <option value="4">4 meses</option>
+                                                    <option value="5">5 meses</option>
+                                                    <option value="6">6 meses</option>
+                                                    <option value="7">7 meses</option>
+                                                    <option value="8">8 meses</option>
+                                                    <option value="9">9 meses</option>
+                                                    <option value="10">10 meses</option>
+                                                    <option value="11">11 meses</option>
+                                                    <option value="12">12 meses</option>
+                                                </select> -->
+                                                <select name="sources" id="tiempo" class="custom-select sources" data-placeholder="Seleccionar">
+                                                    <option value="" selected >Seleccionar</option>
+                                                    <option value="1">1 mes</option>
+                                                    <option value="2">2 meses</option>
+                                                    <option value="3">3 meses</option>
+                                                    <option value="4">4 meses</option>
+                                                    <option value="5">5 meses</option>
                                                     <option value="6">6 meses</option>
                                                     <option value="7">7 meses</option>
                                                     <option value="8">8 meses</option>
@@ -193,8 +209,7 @@
                                                     <option value="11">11 meses</option>
                                                     <option value="12">12 meses</option>
                                                 </select>
-                                            
-                                            <div class="error error-pago d-none">
+                                            <div class="error error-tiempo d-none">
                                                 <img
                                                     src="img/cerrar_circulo.svg"
                                                     alt="icono Cerrar"
@@ -215,7 +230,7 @@
                                             </p>
                                         </div>
                                         <custom-boton
-                                            id="btn-submit"
+                                            id="btn-inversion"
                                             tipo="primario"
                                             texto="Calcular"
                                             desabilitado="true"
@@ -223,17 +238,17 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida">
+                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida d-none">
                                 <div class="inverion-formulario--resultados">
                                     <div class="datos-entrada">
                                         
                                         <p  class="datos-entrada--periodo">
                                          Monto al final de 
-                                            <span id="entrada-inversion">
+                                            <span id="entrada-plazo">
                                                 12 meses 
                                             </span> 
                                         </p>
-                                        <p class="datos-entrada--monto">
+                                        <p class="datos-entrada--monto" id="salida-montoFinal">
                                             $11,013.89
                                         </p>
                                         <p class="datos-entrada--aclaracion">
@@ -250,9 +265,11 @@
                                         <div class="detalle">
                                             
                                             <p class="detalle-descripcion">
-                                                Después de 12 meses, tendrás
+                                                Después de 
+                                                <span id="detalle-plazo">12 meses</span>
+                                                , tendrás
                                             </p>
-                                            <p class="detalle-cantidad" id="">
+                                            <p class="detalle-cantidad" id="detalle-montoFinal" >
                                                 $10,586.26
                                             </p>
                                           
@@ -261,7 +278,7 @@
                                             </p>
                                             <p
                                                 class="detalle-cantidad premio"
-                                                id=""
+                                                id="premio"
                                             >
                                             $427.62
                                             </p>
@@ -270,7 +287,7 @@
                                             </p>
                                             <p
                                                 class="detalle-cantidad"
-                                                id=""
+                                                id="isr"
                                             >
                                                 $0.00
                                             </p>
@@ -280,7 +297,7 @@
                                             </p>
                                             <p
                                                 class="detalle-cantidad"
-                                                id=""
+                                                id="detalle-tasa"
                                             >
                                             10.00%
                                             </p>
@@ -289,7 +306,7 @@
                                             </p>
                                             <p
                                                 class="detalle-cantidad"
-                                                id=""
+                                                id="gat-nominal"
                                             >
                                              10.00%
                                             </p>
@@ -298,7 +315,7 @@
                                             </p>
                                             <p
                                                 class="detalle-cantidad"
-                                                id=""
+                                                id="gat-real"
                                             >
                                             5.16%
                                             </p>
@@ -532,5 +549,104 @@
         <custom-footer></custom-footer>
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/inversion-creciente.js"></script>
+        <script>
+            var $customSelect = $( '.custom-select' );
+	var $resetButton = $( '#resetButton' );
+
+
+	$customSelect.each(function() {
+		var classes = $( this ).attr( 'class' );
+		var id = $( this ).attr( 'id' );
+		var name = $( this ).attr( 'name' );
+
+		var template =  '<div class="' + classes + '">';
+		template += '<span class="custom-select-trigger">';
+		template += '<span class="custom-select-trigger-text">' + $( this ).data( 'placeholder' ) + '</span>';
+		template += '</span>';
+		template += '<div class="custom-options">';
+
+		$(this).find( 'option' ).each( function() {
+			template += '<span class="custom-option" data-value="' + $( this ).attr( 'value' ) + '">' + $( this ).html() + '</span>';
+		});
+
+		template += '</div></div>';
+		
+		var customSelectWrapper = $( '<div class="custom-select-wrapper"></div>' );
+		customSelectWrapper.css({
+			'-webkit-user-select': 'none',
+			'-moz-user-select': 'none',
+			'-ms-user-select': 'none',
+			'user-select': 'none'
+		});
+
+		$( this ).wrap( customSelectWrapper );
+		$( this ).after( template );
+	});
+
+
+	$( document ).on( 'click', function( e ){
+		var eTarget = e.target;
+
+		if( !$( eTarget ).closest( '.custom-select-wrapper' ).hasClass( 'custom-select-wrapper' ) ) {
+			$( '.custom-select' ).removeClass( 'opened' );
+			customOptionsClosed();
+		}
+	});
+
+
+	$( '.custom-select-trigger' ).on( 'click', function() {
+		$( this ).parents( '.custom-select' ).toggleClass( 'opened' );
+
+		var timer;
+		if( $( this ).parents( '.custom-select' ).hasClass( 'opened' ) ){
+			clearTimeout( timer );
+
+			$( this )
+				.parents( '.custom-select' )
+				.find( '.custom-options' )
+				.stop()
+				.css('display', 'block')
+				.animate({
+					'opacity': '1',
+					'margin-top': '15px'
+				},100 );
+		}
+
+		else{
+			customOptionsClosed();
+		}
+
+	});
+
+
+	$( '.custom-option' ).on( 'click', function() {
+		$( this ).parents( '.custom-select-wrapper' ).find( 'select' ).val( $( this ).data( 'value' ) );
+		$( this ).parents( '.custom-options' ).find( '.custom-option' ).removeClass( 'selection' );
+		$( this ).addClass( 'selection' );
+		$( this ).parents( '.custom-select' ).removeClass( 'opened' );		
+		$( this ).parents( '.custom-select' ).find( '.custom-select-trigger-text' ).text( $( this ).text() );
+		customOptionsClosed();
+	});
+
+
+	$resetButton.on('click', function() {
+		$( '.custom-select-trigger-text' ).text( $customSelect.data( 'placeholder' ) );
+	});
+
+
+	function customOptionsClosed() {
+		$('.custom-options')
+			.stop()
+			.animate({
+				opacity: 0,
+				'margin-top': '0'
+			},100 );
+
+		t = setTimeout(function(){
+			$('.custom-options').css('display', 'none');
+		}, 500 );
+	}
+
+        </script>
     </body>
 </html>
