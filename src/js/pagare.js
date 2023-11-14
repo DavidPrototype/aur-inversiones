@@ -143,7 +143,7 @@ $(".js-range-slider").ionRangeSlider({
     skin: "round",
     min: 28,
     max: 360,
-    values:rangos,
+    values:[28,120,210,360],
     postfix: " dias",  
     grid: true,
     hide_min_max: true,
@@ -248,12 +248,13 @@ document
 
     function calcular_inversion_pagare(miInversion,plazo){
        
+        btnCalcular.innerText = 'Volver a calcular';
         plazo = parseInt(plazo);       
         
-        const tablaInversion = tasas.filter((elem) => elem[0] == plazo )       
+        const tablaInversion = tasas.filter((elem) => (elem[0] == plazo || elem[1] == plazo) )       
         const datosTabla = tablaInversion[0];
 
-        const tablaGats =gats.filter((elem) => elem[0] == plazo ) 
+        const tablaGats =gats.filter((elem) => (elem[0] == plazo || elem[1] == plazo) ) 
         const datosGats = tablaGats[0];
         // console.log(datosGats)
 

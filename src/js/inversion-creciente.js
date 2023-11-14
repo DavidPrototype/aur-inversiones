@@ -147,7 +147,10 @@ const alertErrorInversion = document.querySelector(".error-inversion");
 const alertErrorTiempo = document.querySelector(".error-tiempo");
 const btnCalcular = document.querySelector("#btn-inversion button");
 const selectTiempo = document.getElementById('tiempo');
+let options=  document.querySelectorAll('.custom-option')
 
+//inputs
+let inputInversion = document.getElementById("mi-inversion");
 
 
 
@@ -160,13 +163,15 @@ let miInversion = 0;
 /// NUMEROS
 let regExNumber = /^[0-9$,.]+$/;
 
-document
-    .querySelector("#mi-inversion")
-    .addEventListener("input", (event) => {
+inputInversion.addEventListener("input", (event) => {
         alertErrorInversion.classList.add("d-none");
-        //miInversion = parseFloat(event.target.value);
+        inputInversion.classList.remove('aprobado');
+        inputInversion.classList.remove('error');
+        //miInversion = parseFloat(event.target);
+       
          
         if (event.target.value.length < 1 || isNaN(event.target.value.length)) {
+            inputInversion.classList.add('error');
             alertErrorInversion.classList.remove("d-none");
             msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
           
@@ -174,6 +179,7 @@ document
         } else {
             let validNumber = regExNumber.test(event.target.value);
             if (!validNumber) {
+                inputInversion.classList.add('error');
                 alertErrorInversion.classList.remove("d-none");
                 msgErrorSaldo.innerText = "Solo se permiten números";
               
@@ -185,18 +191,23 @@ document
                 miInversion = parseFloat(event.target.value.replace("$", "").replace(",", ""));               
 
                 if (miInversion <= 0) {
+                    inputInversion.classList.add('error');
                     alertErrorInversion.classList.remove("d-none");
                     msgErrorSaldo.innerText =
                         "Debes ingresar un monto para calcular";
                          
                     btnCalcular.disabled = true;
                 } else if (miInversion < 1000) {
+                    inputInversion.classList.add('error');
                     alertErrorInversion.classList.remove("d-none");
                     msgErrorSaldo.innerText =
                         "Monto mínimo a partir de $1,000";
                        
                     btnCalcular.disabled = true;
                 } else {
+
+                    inputInversion.classList.remove('error');
+                    inputInversion.classList.add('aprobado');
                     btnCalcular.disabled = false;
                 }
             }
@@ -209,6 +220,23 @@ document
 
         event.target.value = newValue;
     });
+
+
+    options.forEach( (option)=>{
+        option.addEventListener('click',()=>{
+            console.log(option.dataset.value)
+            if(option.dataset.value !=''){
+                alertErrorTiempo.classList.add("d-none");
+                btnCalcular.disabled = false;               
+            }else{
+                alertErrorTiempo.classList.remove("d-none");
+                msgErrorTiempo.innerText  = "Selecciona un plazo";
+                btnCalcular.disabled = true; 
+            }
+        })
+    })
+  
+   
 
 
 
@@ -226,10 +254,12 @@ btnCalcular.addEventListener('click',(e)=>{
         alertErrorInversion.classList.remove("d-none");
         msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
         
-    }else if(selectTiempo.value =='') {
+    }   else if(selectTiempo.value =='') {
         alertErrorTiempo.classList.remove("d-none");
         msgErrorTiempo.innerText  = "Selecciona un plazo";
-    }else{
+        btnCalcular.disabled = true; 
+    }
+    else{
         alertErrorTiempo.classList.add("d-none");
         calcular_inversion(miInversion,selectTiempo.value);
     }
@@ -241,6 +271,7 @@ function calcular_inversion(miInversion, plazo){
        
     // console.log(miInversion,plazo)
     // console.log(data);
+    btnCalcular.innerText = 'Volver a calcular';
     plazo = parseInt(plazo);
     const tablaInversion = data.filter((elem) => elem[0] == plazo )
     // console.log(tablaInversion)

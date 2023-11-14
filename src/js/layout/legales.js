@@ -27,7 +27,7 @@ export default class Legales extends HTMLElement {
                 
                 <p>Los productos anteriores solo se encuentran disponibles para su contratación en la República Mexicana.</p>
                 <p>*Para hacer uso de los servicios de Banca Electrónica, es indispensable que el cliente haya firmado el contrato de servicios digitales.</p>
-                <p><a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5" target="_blank">Tabla de tasas y comisiones</a></p>
+                <p id="link-tyc"><a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5" target="_blank">Tabla de tasas y comisiones</a></p>
              </div>
           </div>
         </div>

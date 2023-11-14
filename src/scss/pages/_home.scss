@@ -264,7 +264,10 @@
                 }
     
                 .contenido{
-                        order: 1;
+                        order: -1;
+                        .titulo{
+                            @include text-lg-32;
+                        }
                    
                 }
             }

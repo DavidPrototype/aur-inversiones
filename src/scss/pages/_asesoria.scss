@@ -8,6 +8,7 @@
 
 .main-asesoria{
   padding-top: 2rem;
+  background: var(--color-azul100);
 
   
   .custom-container{
@@ -72,7 +73,8 @@
         }
         .aviso-privacidad{
             p{
-                @include text-md-20;
+                font-family: var(--font-secundaria-regular);
+                @include text-sm-16;
                 margin-bottom: 24px;
                 a{
                     font-family: var(--font-secundaria-bold);
@@ -178,7 +180,7 @@
     
             &-card{
                 
-                padding: 40px 64px;                             
+                // padding: 40px 64px;                             
                 position: absolute;
                 bottom: 34px;
                 left: -70px;
@@ -261,6 +263,7 @@
             }
     
             &-card{
+                padding: 40px 64px;  
                 width: 80%;
                 bottom: 34px;
                 left: -70px;

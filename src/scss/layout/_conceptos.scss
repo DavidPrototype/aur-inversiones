@@ -81,9 +81,12 @@
     }
 
     &--infocards {
+        padding: 0;
         .swiper {
             padding: 0 var(--spacing03);
-
+            &-conceptos{
+                padding: 0 !important;
+            }
             &.no-slide .swiper-wrapper {
                 flex-flow: row wrap;
                 height: auto;
@@ -91,7 +94,8 @@
         }
 
         .card{
-            background:var(--color-azul100) ;
+            background:var(--color-azul100);
+            box-shadow:none !important ;
         }
     }
 

@@ -59,6 +59,7 @@ export class CardIcon extends HTMLElement {
                 >
                     <picture>
                         <img
+                            class="w-100"
                             src="${icono}"
                             alt=""
                         />

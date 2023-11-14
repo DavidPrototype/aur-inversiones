@@ -1,5 +1,8 @@
 .main-pagare{
     overflow: hidden;
+    #link-tyc{
+        display: none;
+    }
     .beneficios-template{
         margin-bottom: -40px;
         position: relative;
@@ -31,8 +34,8 @@
            margin-bottom: 2rem;
 
             &-title{
-                @include text-lg-32;
                 h2{
+                    @include text-lg-32;
                     font-family: var(--font-primaria-regular);
                   
                     color: var(--color-blanco);
@@ -397,9 +400,22 @@
             .headline{
                 justify-content: space-between;
                 align-content: center;
+                &-title{
+                    h2{
+
+                        @include text-lg-48;
+                    }
+                }
+
                 &-imagen{                    
                     position: static;
+                    img{
+                        width: 185px;
+                        height: 216px;
+
+                    }
                 }
+                
             }
             &--entrada.resultados{
                 flex-basis:30%;//hacerlo con js 
@@ -410,7 +426,7 @@
                 padding: 0;
             }
             &--simulador{
-                padding: 64px 40px;
+                padding: 32px 40px;
                 height: 100%;
                 p{
                     margin-top: 0;

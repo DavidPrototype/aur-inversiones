@@ -86,6 +86,11 @@ export default class Footer extends HTMLElement {
                            title="Tik Tok"
                            alt="Tik Tok"
                        /></a>
+                       <a href="https://wa.me/5215530559922" target="_blank"><img
+                                src="img/whatsapp.svg"
+                                title="Whatsapp"
+                                alt="Whatsapp"
+                            /></a>
                        
                    </div>
                </div>
