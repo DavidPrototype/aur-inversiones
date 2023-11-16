@@ -147,7 +147,7 @@ const alertErrorInversion = document.querySelector(".error-inversion");
 const alertErrorTiempo = document.querySelector(".error-tiempo");
 const btnCalcular = document.querySelector("#btn-inversion button");
 const selectTiempo = document.getElementById('tiempo');
-let options=  document.querySelectorAll('.custom-option')
+let options=  document.querySelectorAll('.custom-option');
 
 //inputs
 let inputInversion = document.getElementById("mi-inversion");

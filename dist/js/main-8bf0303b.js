@@ -59,12 +59,12 @@
                             href="https://www.bancoppel.com/main/index.html"
                             target="_blank"
                         >
-                            <img src="../img/Logotipo.svg" alt="Logo BanCoppel" />
+                            <img src="img/Logotipo.svg" alt="Logo BanCoppel" />
                         </a>
                     </div>
                 </div>
                 
-                <div class="nav--menu custom-container">
+                <div class="nav--menu custom-container d-block">
                         <ul class="menu font-secondary">
                             <li class="menu__item" id="nav-inicio"><a href="index.html">Inicio</a></li>
                             <li class="menu__item" id="nav-inversion"><a href="inversioncreciente.html">Inversión Creciente</a></li>

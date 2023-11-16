@@ -46,5 +46,5 @@ export default {
         /* port: 8080, */
         hot: true,
     },
-    plugins: [htmlPurge({})],
+    // plugins: [htmlPurge({})],
 };
