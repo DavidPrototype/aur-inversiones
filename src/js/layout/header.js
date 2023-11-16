@@ -16,7 +16,7 @@ export default class Header extends HTMLElement {
                             href="https://www.bancoppel.com/main/index.html"
                             target="_blank"
                         >
-                            <img src="../img/Logotipo.svg" alt="Logo BanCoppel" />
+                            <img src="img/Logotipo.svg" alt="Logo BanCoppel" />
                         </a>
                     </div>
                 </div>

@@ -13,6 +13,8 @@ export default {
                 index: path.resolve(__dirname, "src/index.html"),
                 inversion: path.resolve(__dirname, "src/inversioncreciente.html"),
                 pagare: path.resolve(__dirname, "src/pagare.html"),
+                asesoria: path.resolve(__dirname, "src/asesoria.html"),
+                envio: path.resolve(__dirname, "src/envio.html"),
                 error404: path.resolve(__dirname, "src/404.html"), 
                 error500: path.resolve(__dirname, "src/500.html"), 
                 error502: path.resolve(__dirname, "src/502.html"), 

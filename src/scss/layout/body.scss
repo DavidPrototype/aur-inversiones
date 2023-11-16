@@ -2,19 +2,18 @@ body {
     @import "../pages/globals";
     @import "_header";
     @import "_footer";
-    @import "_promociones";
-    // @import "_app-bancoppel";
+    @import "_promociones";  
     @import "_beneficios";
     @import "_requisitos";
     @import "_conceptos";
     @import "_preguntas-frecuentes";
     @import "_legales";
-    @import "_custom-tooltip";
-    @import "../pages/_asesoria";
-    @import "../pages/_envio";
+    @import "_custom-tooltip";   
     @import "../pages/_home";
     @import "../pages/_inversion_creciente";
     @import "../pages/_pagare";
     @import "../pages/_error";
+    @import "../pages/_asesoria";
+    @import "../pages/_envio";
    
 }

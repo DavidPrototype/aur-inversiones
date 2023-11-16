@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta name="robots" content="noindex" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+
+        <title>Inversiones BanCoppel | Pagare</title>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/css/ion.rangeSlider.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
+
+       
+
+      
+      <script type="module" crossorigin src="./js/pagare-283dc658.js"></script>
+      <link rel="modulepreload" crossorigin href="./js/main-e00bc99a.js">
+      <link rel="modulepreload" crossorigin href="./js/pagination-fb35e2cf.js">
+      <link rel="stylesheet" href="./css/main-8b7e4dcd.css">
+      <link rel="stylesheet" href="./css/pagination-c542050c.css">
+    </head>
+    <body>
+    
+
+        <custom-header nav-active="nav-pagare"></custom-header>
+        <main class="main-pagare">
+            <section class="section-hero">
+                <div class="custom-container">
+                    <div class="row">
+                        <custom-hero
+                            tipo="secundario"
+                            titulo="Pagaré"
+                            subtitulo="Disfruta los beneficios de invertir y decide cuándo retirar tu dinero"
+                            texto-boton="Solicitar asesoría"
+                            link-boton="asesoria.html"
+                            imagen="img/hero-pagare.png"
+                            imagen-webp="img/hero-pagare.webp"
+                        >
+                        </custom-hero>
+                    </div>
+                </div>
+            </section>
+            <section class="beneficios-template" id="beneficios">
+                <div class="custom-container">
+                    <div class="row">
+                        <div class="col-8 col-xl-4">
+                            <h2  class="title-underline">
+                                ¡Elige un plazo que se ajuste a tus metas!
+                            </h2>
+                          <p class="subtitulo">
+                            Crece tu dinero desde <span class="strong-primary">$1,000 pesos.</span>
+                          </p>
+                        </div>
+                        <div class="col-xl-8 beneficios-template--img">
+                            <picture>
+                                <source
+                                    srcset="img/pagare-bene.webp"
+                                    type="image/webp"
+                                />
+                                <img
+                                    class="w-100"
+                                    src="img/pagare-bene.jpg"
+                                />
+                            </picture>
+                        </div>
+                    </div>
+                    <div class="row beneficios-template--cards">
+                      <!-- Slider main container -->
+                        <div class="swiper-beneficios col-xl-12">
+                            <div class="swiper-wrapper">
+                                  <!-- Slides -->
+                                  <div class="swiper-slide">
+                                    <custom-card-icon
+                                        icono="img/wallet.svg"
+                                        titulo-card="Obtén tus ganancias directamente en tu Cuenta Efectiva Digital"
+                                        alineacion="left"
+                                        flujo="columna"
+                                    ></custom-card-icon>
+                                  </div>
+                                  <div class="swiper-slide">
+                                    <custom-card-icon
+                                    icono="img/dinero-2.svg"
+                                    titulo-card="Reinvierte en automático hasta por 3 años, en la misma fecha en la que iniciaste"
+                                    alineacion="left"
+                                    flujo="columna"
+                                    ></custom-card-icon>
+                                  </div>
+                                  <div class="swiper-slide"> 
+                                    <custom-card-icon
+                                        icono="img/dinero-circle.svg"
+                                        titulo-card="Retira tu dinero en una fecha específica o plazo seleccionado"
+                                        alineacion="left"
+                                        flujo="columna"
+                                    ></custom-card-icon>
+                                  </div>
+                                                    
+                            </div>
+                              <!-- If we need pagination -->
+                            <div class="swiper-beneficios-pagination"></div>
+                        </div>
+                    </div>
+        
+                    <div class="row justify-content-center beneficios-template--links">
+                        <div class="col-6 text-center">
+                            <a href="https://bancoppel.com/inversion_bcopp/pagare.html" target="_blank">Conoce más</a>
+                        </div>
+                    </div>          
+                </div>     
+            </section>
+            <section class="inverion-formulario">
+                <div class="custom-container">
+                    <div class="row headline">
+                        <div class="col-12 col-lg-8 headline-title">
+                            <h2>
+                                Descubre cuánto puedes ganar con
+                                <span> Pagaré</span>
+                            </h2>
+                        </div>
+                        <div class="col-12 col-lg-4 headline-imagen">
+                            <img src="img/img-pagare.svg" alt="Imagen Inversion Creciente">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center" id="row-calculadora">
+                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--entrada">
+                            <div class="inverion-formulario--simulador border-movil">
+                                
+                                <p>
+                                    Ingresa los datos
+                                </p>
+                                <form class="inverion-formulario--formulario">
+                                    <div class="captura-saldo">
+                                        <label for="mi-inversion-pagare"
+                                            >¿Cuánto quieres invertir?</label
+                                        >
+
+                                        <input
+                                         
+                                            type="text"
+                                            id="mi-inversion-pagare"
+                                            placeholder="$0.00"
+                                        />
+                                        <div class="error error-inversion d-none">
+                                            <img
+                                                src="img/cerrar_circulo.svg"
+                                                alt="icono Cerrar"
+                                            />
+                                            <p class="mensaje"></p>
+                                        </div>
+                                    </div>
+                                    <div class="captura-saldo">
+                                        <label for="tiempo"
+                                            >¿Durante cuánto tiempo?</label
+                                        >
+                                       
+                                        <!-- <input type="range" class="form-range"  min="28" max="360" id="tiempo" list="markers" />
+                                        <datalist id="markers" style="height: 0;">
+                                            <option value="28"></option>
+                                            <option value="120"></option>
+                                            <option value="210"></option>
+                                            <option value="360"></option>
+                                            
+                                        </datalist>
+                                        <div class="rango-valores">
+                                            <span>28</span>
+                                            <span>120</span>
+                                            <span>210</span>
+                                            <span>360</span>                            
+                                        </div> -->
+                                        <input type="text" id="tiempo" class="js-range-slider" name="my_range" value="" />
+                                        <div class="error error-tiempo d-none">
+                                            <img
+                                                src="img/cerrar_circulo.svg"
+                                                alt="icono Cerrar"
+                                            />
+                                            <p class="mensaje"></p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="advertencia">                                           
+
+                                        <p>
+                                            <a 
+                                              href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=48351fa0"
+                                              target="_blank"
+                                            >
+                                                Para conocer la GAT: Consulta las
+                                                tasas de Inversión Creciente
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <custom-boton
+                                        id="btn-pagare"
+                                        tipo="secundario"
+                                        texto="Calcular"
+                                        desabilitado="true"
+                                    ></custom-boton>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida hide">
+                            <div class="inverion-formulario--resultados">
+                                <div class="datos-entrada">
+                                    
+                                    <p  class="datos-entrada--periodo">
+                                     Monto al final de 
+                                        <span id="entrada-plazo">
+                                            360 dias 
+                                        </span> 
+                                    </p>
+                                    <p class="datos-entrada--monto" id="salida-montoFinal">
+                                        $11,013.89
+                                    </p>
+                                    <div class="grafico">
+                                        <div class="grafico-info">
+
+                                            <div class="grafico-montos">
+                                                <span class="monto-inicial" id="mi-inversion">$10007.87</span>
+                                                <div class="monto-final">
+                                                    <p class="titulo">Monto máximo</p>
+                                                    <p class="cantidad">$10,361.74</p>
+                                                </div>
+                                            </div>
+                                            <div class="grafico-imagen">
+                                                    <img src="img/grafico-pagare.svg" alt="" class="w-100">
+                                                   
+                                            </div>
+                                        </div>
+                                        <div class="grafico-rangos">
+                                            <span class="rango-inicial">28 días</span>
+                                            <span class="rango-final">360 días</span>
+                                        </div>
+
+                                    </div>
+                                    <p class="datos-entrada--aclaracion">
+                                        Las cantidades mostradas son ejemplos con fines informativos e 
+                                        ilustrativos y no representan ninguna 
+                                        línea de crédito específica. 
+                                    </p>
+                                    <p class="datos-entrada--link">
+                                        <a href="asesoria.html">Solicitar asesoría</a>
+                                    </p>
+                                   
+                                </div>
+                                <div class="detalles">
+                                    
+                                    <div class="detalle">
+                                        
+                                        <p class="detalle-descripcion">
+                                            Después de 
+                                            <span id="detalle-plazo">12 meses</span>
+                                            , tendrás
+                                        </p>
+                                        <p class="detalle-cantidad" id="detalle-montoFinal" >
+                                            $10,586.26
+                                        </p>
+                                      
+                                        
+                                        <p class="detalle-descripcion">
+                                            -ISR
+                                        </p>
+                                        <p
+                                            class="detalle-cantidad"
+                                            id="isr"
+                                        >
+                                            $0.00
+                                        </p>
+                                        <hr class="detalle-separador" />
+                                        <p class="detalle-descripcion">
+                                            Tasa de rendimiento
+                                        </p>
+                                        <p
+                                            class="detalle-cantidad"
+                                            id="detalle-tasa"
+                                        >
+                                        10.00%
+                                        </p>
+                                        <p class="detalle-descripcion">
+                                            GAT Nominal
+                                        </p>
+                                        <p
+                                            class="detalle-cantidad"
+                                            id="gat-nominal"
+                                        >
+                                         10.00%
+                                        </p>
+                                        <p class="detalle-descripcion">
+                                            GAT Real
+                                        </p>
+                                        <p
+                                            class="detalle-cantidad"
+                                            id="gat-real"
+                                        >
+                                        5.16%
+                                        </p>
+                                        <p class="detalle-descripcion">
+                                            Fecha de vencimiento
+                                        </p>
+                                        <p class="detalle-cantidad fecha-vencimiento">
+                                            <span id="fecha-vence">18/08/2024</span> 
+                                            <!-- <span id="ayuda-tooltip" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-customClass="custom-tooltip" data-bs-title="Cálculo de la fecha en que termina tu plazo de inversión "><img src="img/ayuda.svg" alt="Icono de Ayuda"/></span>  -->
+                                            <img  
+                                            src="img/ayuda.svg" width="24" height="24" 
+                                            id="ayuda-tooltip"  
+                                            data-bs-toggle="tooltip" data-bs-placement="right"
+                                            data-bs-custom-class="custom-tooltip"
+                                            data-bs-title="Cálculo de la fecha en que termina tu plazo de inversión "
+                                             />
+                                      
+                                   
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                  
+                </div>
+            </section>
+            <section class="requisitos">
+                <div class="custom-container">
+                    <div class="row col-lg-10 col-xl-12">
+                        <div class="col-12 col-xl-5 requisitos--img">
+                            <picture>
+                                <source
+                                    srcset="img/requisitos.webp"
+                                    type="image/webp"
+                                />
+                                <img
+                                   class="w-100"
+                                    src="img/requisitos.jpg"
+                                    alt="image/webp"
+                                />
+                            </picture>
+                        </div>
+                        <div class="col-12 col-xl-7 requisitos--info">
+                            <h2 class="title-underline">
+                                ¿Qué necesitas?
+                            </h2>
+                            
+                            <ul>
+                                <li>Identificación Oficial Vigente</li>                                
+                                <li>CURP</li>
+                                <li>
+                                    Comprobante de domicilio
+                                     no mayor a 3 meses
+                                </li>
+                                <li>
+                                    Cuenta Efectiva Digital activa 
+                                    (no aplica Cuenta Clic ni Cuenta Jóvenes)
+                                </li>
+                            </ul>
+                            <p>
+                                <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4534a0a0" target="_blank">Conoce más</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row requisitos--mensajes">
+                        <div class="col-12 col-lg-10 col-xl-8">
+                           <div class="alerta">
+                              <picture class="alerta--imagen">
+                                
+                                <img
+                                  src="img/tienda.svg"
+                                  alt="Imagen Tienda"
+                                />
+                              </picture>
+                              <div class="alerta--contenido">
+                                  <p class="titulo">Te acompañamos en tu camino de inversión</p>                                      
+                                  <p class="descripcion"> <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank">Acude a Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank">App BanCoppel*.</a></p>                        
+                              </div>
+                           </div><!-- alerta -->
+                           
+                        </div>
+                    </div> 
+                </div>
+            </section>
+            <section class="conceptos">
+                <div class="custom-container">
+                    <div class="row">
+                        <div class="col-12 conceptos--info">
+                            <h2 class="title-underline">
+                                Lo que debes saber para invertir  
+                            </h2>
+                            <p>
+                                Y sacarle provecho a tu dinero
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="custom-container conceptos-container-swiper">
+                    <div class="row">
+                        <div class="col-12 conceptos--infocards">
+                            <div class="swiper swiper-conceptos">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide" id="fecha-corte">
+                                        <custom-card-icon
+                                            alineacion="left"
+                                            flujo="columna"
+                                            icono="img/objetos.svg"
+                                            titulo-card="ISR"
+                                            contenido-card="Es el Impuesto Sobre la Renta que pagas al gobierno por tus ganancias o ingresos."
+                                        ></custom-card-icon>
+                                    </div>
+    
+                                    <div class="swiper-slide" id="pago-minimo">
+                                        <custom-card-icon
+                                            alineacion="left"
+                                            flujo="columna"
+                                            icono="img/dinero-porcentaje.svg"
+                                            titulo-card="Tasa de rendimiento"
+                                            contenido-card="Es la ganancia que obtienes de una inversión y es indicada como porcentaje."
+                                        ></custom-card-icon>
+                                    </div>
+    
+                                    <div class="swiper-slide" id="fecha-limite-pago">
+                                        <custom-card-icon
+                                            alineacion="left"
+                                            flujo="columna"
+                                            icono="img/dinero-bolsa.svg"
+                                            titulo-card="GAT Nominal"
+                                            contenido-card="Es lo que el banco te va a dar una vez que reste la comisión que cobra a sus clientes por invertir."
+                                        ></custom-card-icon>
+                                    </div>
+    
+                                    <div class="swiper-slide">
+                                        <custom-card-icon
+                                            alineacion="left"
+                                            flujo="columna"
+                                            icono="img/dinero-grafico.svg"
+                                            titulo-card="GAT Real"
+                                            contenido-card="Es el rendimiento real que obtienes de una inversión después de descontar los impuestos y la inflación."
+                                        ></custom-card-icon>
+                                    </div>
+                                   
+    
+                                    <div class="conceptos__image lady">
+                                        <picture>
+                                            <source
+                                                srcset="img/isr.webp"
+                                                type="image/webp"
+                                            />
+                                            <img
+                                                src="img/isr.jpg"
+                                                alt="Imagen Young Lady"
+                                            />
+                                        </picture>
+                                    </div>
+    
+                                    
+                                    <div class="conceptos__image tdc">
+                                        <picture>
+                                            <source
+                                                srcset="
+                                                    img/tasa-rendimiento.webp
+                                                "
+                                                type="image/webp"
+                                            />
+                                            <img
+                                                src="img/tasa-rendimiento.jpg"
+                                                alt="Imagen Tarjeta de Credito"
+                                            />
+                                        </picture>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+            <section class="faqs" id="preguntas-frecuentes">
+                <div class="custom-container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-xl-6 faqs--header">
+                            <picture>
+                                <img src="img/icon-ayuda.svg" alt="" />
+                            </picture>
+                            <h2 class="title-underline">
+                                <strong
+                                    >Preguntas <br />
+                                    frecuentes</strong
+                                >
+                            </h2>
+                        </div>
+                        <div class="col-12 col-xl-6">
+                            <div class="accordion" id="accordionExample">
+                                <custom-accordion
+                                    id="faq-1"
+                                    title="¿Qué es un Pagaré BanCoppel?"
+                                    content="El pagaré es una inversión con plazo fijo, lo que significa que cobrarás el dinero invertido más los intereses generados en el momento que tú elijas. Los plazos de inversión van de los 28 y hasta 360 días."
+                                ></custom-accordion>
+                                <custom-accordion
+                                    id="faq-2"
+                                    title="¿Qué tan seguro es invertir en Pagaré BanCoppel? "
+                                    content="Es completamente seguro, pues desde que inviertes conocerás tus ganancias. Además, BanCoppel es un respaldo de solidez financiera."
+                                ></custom-accordion>
+                                <custom-accordion
+                                    id="faq-3"
+                                    title="¿Cómo invertir mi dinero en Pagaré BanCoppel?"
+                                    content="Si tienes una Cuenta de Débito BanCoppel, visita una Sucursal o entra a tu App; selecciona Inversión Pagaré BanCoppel y comienza a invertir desde $1,000 pesos. "
+                                ></custom-accordion>
+                                <custom-accordion
+                                    id="faq-4"
+                                    title="¿Cómo funciona la tasa de interés?"
+                                    content="La tasa de interés es creciente por mes cumplido, lo que significa que aumenta a medida que pasa el tiempo y se cumple cada mes de inversión."
+                                ></custom-accordion>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <custom-legales></custom-legales>
+        </main>
+        <custom-footer></custom-footer>
+        
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                 if(localStorage.getItem('autenticadoInver') != 'si'){
+                          window.location.href ='login.html';  
+                      }
+                
+      
+            });
+        </script>
+       
+    </body>
+</html>
