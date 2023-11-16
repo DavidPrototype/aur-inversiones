@@ -20,6 +20,8 @@
     --state-error-400: #BA4B44;
     --state-informacion-400: #0076A9;
     --state-aprobacion-400: #2E8241;
+    $input-focus-border-color: var(--state-informacion-400) !important;
+    $input-border-width:2px;
 
 
     --color-gradienteaur: linear-gradient(

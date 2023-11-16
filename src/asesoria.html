@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <meta name="robots" content="noindex" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
@@ -132,5 +133,14 @@
             </footer>
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/asesoria.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                 if(localStorage.getItem('autenticadoInver') != 'si'){
+                          window.location.href ='login.html';  
+                      }
+                
+      
+            });
+        </script>
     </body>
 </html>

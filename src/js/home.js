@@ -6,7 +6,7 @@ import {  Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-const mediaquery = window.matchMedia("(max-width:1279px)");
+const mediaquery = window.matchMedia("(max-width:1278px)");
 const mediaqueryBeneficios = window.matchMedia("(max-width:767px)");
 let swiperBeneficios, swiperPromos;
 
@@ -39,7 +39,7 @@ const enableSwiperPromos = () => {
   
     swiperPromos = new Swiper(".swiper", {
         modules: [Pagination],
-        spaceBetween: 24,
+        // spaceBetween: 24,
         slidesPerView: "auto",
         direction: "horizontal",
         pagination: {

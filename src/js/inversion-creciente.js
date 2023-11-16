@@ -2,7 +2,7 @@
 // import Swiper JS
 import Swiper from 'swiper';
 import {  Pagination } from 'swiper/modules';
-import data from '../data/inversiones';
+import data from './data/inversiones';
 
 // import Swiper styles
 import 'swiper/css';
@@ -224,7 +224,7 @@ inputInversion.addEventListener("input", (event) => {
 
     options.forEach( (option)=>{
         option.addEventListener('click',()=>{
-            console.log(option.dataset.value)
+            // console.log(option.dataset.value)
             if(option.dataset.value !=''){
                 alertErrorTiempo.classList.add("d-none");
                 btnCalcular.disabled = false;               
@@ -242,7 +242,8 @@ inputInversion.addEventListener("input", (event) => {
 
 btnCalcular.addEventListener('click',(e)=>{
     e.preventDefault();
-
+    let valorSelect = document.querySelector('.custom-select-trigger-text').innerText;
+    // console.log(valorSelect);
     miInversion = parseFloat(
         document
             .querySelector("#mi-inversion")
@@ -254,7 +255,14 @@ btnCalcular.addEventListener('click',(e)=>{
         alertErrorInversion.classList.remove("d-none");
         msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
         
-    }   else if(selectTiempo.value =='') {
+    }else if (miInversion < 1000) {
+        inputInversion.classList.add('error');
+        alertErrorInversion.classList.remove("d-none");
+        msgErrorSaldo.innerText =
+            "Monto mínimo a partir de $1,000";           
+        btnCalcular.disabled = true;
+        
+    }else if(selectTiempo.value =='' || valorSelect =='Seleccionar') {
         alertErrorTiempo.classList.remove("d-none");
         msgErrorTiempo.innerText  = "Selecciona un plazo";
         btnCalcular.disabled = true; 
@@ -282,13 +290,25 @@ function calcular_inversion(miInversion, plazo){
     let interesBruto =0;
     let montoFinal =0;
     let isr = 0;
+    let isrCapital=0.15;
+    let monto_exento=189222;
     let gat_nominal = 4.00;
     let gat_real = -0.12;
     let premio = 0;
 
     interesBruto = miInversion * (tasa/360) * plazoHasta;
-    montoFinal = miInversion +interesBruto - isr;
+    // console.log(interesBruto)
+    montoFinal = (miInversion +interesBruto) - isr;
     // console.log(montoFinal.toFixed(2));
+    if(plazo == 12){
+        let fechas = fechas_periodo(); //genera las fechas de los periodos a partir de dia de hoy
+        let diffDias = periodo_dias(fechas); // diferencia de dias
+        
+        let montoPeriodos = monto_final_periodos(data,diffDias,miInversion,monto_exento,isrCapital);
+        let montoPremio = monto_final_premio(data,diffDias,miInversion,monto_exento,isrCapital);
+
+        premio =montoPremio - montoPeriodos;
+    }
 
     mostrar_detalle(montoFinal,plazo,premio,tasa,isr,gat_nominal, gat_real);
     
@@ -311,7 +331,103 @@ let USDollar = new Intl.NumberFormat("en-US", {
     document.getElementById('gat-real').innerText= gat_real +' %';
     
     simulador.classList.add('resultados');
-    document.querySelector('.inverion-formulario--entrada').classList.add('resultados')
+    document.querySelector('.inverion-formulario--entrada').classList.add('resultados','show')
     document.querySelector('.inverion-formulario--salida').classList.add('resultados')
-    salidaSimulador.classList.remove('d-none');
+    // salidaSimulador.classList.remove('d-none');
+    salidaSimulador.classList.remove('hide');
+    salidaSimulador.classList.add('show');
 }
+
+function fechas_periodo(){
+    let fechaActual = new Date();
+    let fechas= [];   
+   
+    for (let periodo = 1; periodo <= 12; periodo++) {        
+        fechas.push(fechaActual.setMonth(fechaActual.getMonth() + 1 ));  
+    }
+   
+    return fechas;    
+}
+
+function periodo_dias(fechas=[]){
+  let fechaAnterior = new Date();
+  let diffDias=[];
+  let diff=0;
+  fechas.forEach((fecha,index)=>{
+    const fechaSig = new Date(fechas[index]);    
+    diff = fechaSig - fechaAnterior;
+    let days = diff /(1000 * 60 * 60 * 24);
+    diffDias.push(days);
+    
+    fechaAnterior =fechaSig;
+
+  })  
+  
+//   console.log(diffDias);
+  return diffDias;
+}
+
+function monto_periodo(monto_inicial,tasa,dias,monto_exento,isr){
+    // console.log('Canculo monto periodo')
+    //  console.log(monto_inicial,tasa,dias,monto_exento,isr)
+
+    let tasaPeriodo = parseFloat(tasa/100);
+    let interesPeriodo =parseFloat(isr/100);
+    let interesBruto=0;
+    let calculoISR=0;
+    let montoBrutoFinal =0;
+    let montoNeto = 0;
+    
+    
+    interesBruto = monto_inicial * (tasaPeriodo/360) * dias;
+    montoBrutoFinal = monto_inicial + interesBruto;
+    
+    if(monto_inicial > monto_exento){
+        calculoISR = (monto_inicial - monto_exento) * ( interesPeriodo/365) * dias;
+    }
+
+    montoNeto = montoBrutoFinal - calculoISR;
+    
+    return montoNeto;
+}
+
+function monto_final_periodos(tablaInveriones=[],diffDias=[],monto_inicial,monto_exento,isr){
+    // console.log(tablaInveriones=[],diffDias=[],monto_inicial)
+     let montoCalculo = monto_inicial;
+     let nuevoMonto=0;
+   
+    //  console.log(montoCalculo)
+     tablaInveriones.forEach( (registro,index) =>{
+    
+      nuevoMonto = monto_periodo(montoCalculo,registro[3],diffDias[index],monto_exento,isr)     
+      montoCalculo = nuevoMonto;       
+     })
+    
+    // console.log(montoCalculo)
+    return montoCalculo;
+}
+function monto_final_premio(tablaInveriones=[],diffDias=[],monto_inicial,monto_exento,isr){
+    // console.log(tablaInveriones=[],diffDias=[],monto_inicial)
+     let montoCalculoP = monto_inicial;
+     let nuevoMontoP=0;
+     const tablaInversionInfo = tablaInveriones.filter((registro) => registro[0] == 12 );
+     const datosTabla = tablaInversionInfo[0];
+     let tasa=datosTabla[3];
+    
+    for (let index = 0; index < 12; index++) {
+        
+        nuevoMontoP = monto_periodo(montoCalculoP,tasa,diffDias[index],monto_exento,isr)     
+        montoCalculoP = nuevoMontoP;  
+        
+    }
+     
+    
+    // console.log(montoCalculoP)
+    return montoCalculoP;
+}
+
+
+
+
+
+// monto_periodo(35959.10,7.46,31,189222,0.15)

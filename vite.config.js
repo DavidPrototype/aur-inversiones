@@ -9,7 +9,13 @@ export default {
         outDir: path.resolve(__dirname, "dist"),
         rollupOptions: {
             input: {
-                index: path.resolve(__dirname, "src/componentes.html"),
+                login: path.resolve(__dirname, "src/login.html"),
+                index: path.resolve(__dirname, "src/index.html"),
+                inversion: path.resolve(__dirname, "src/inversioncreciente.html"),
+                pagare: path.resolve(__dirname, "src/pagare.html"),
+                error404: path.resolve(__dirname, "src/404.html"), 
+                error500: path.resolve(__dirname, "src/500.html"), 
+                error502: path.resolve(__dirname, "src/502.html"), 
             },
             output: {
                 chunkFileNames: "js/[name]-[hash].js",

@@ -27,7 +27,7 @@ export default class ModalSalida extends HTMLElement {
                         ></button>
                         <h1 id="modal-salidaLabel">
                             <strong>
-                                Estás a punto de salir del 
+                                Estás a punto de salir de 
                                 Inversiones BanCoppel</strong
                             >
                         </h1>

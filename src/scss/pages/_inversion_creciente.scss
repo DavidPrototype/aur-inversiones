@@ -3,6 +3,7 @@
     #link-tyc{
         display: none;
     }
+   
     .beneficios-template{
         margin-bottom: -40px;
         position: relative;
@@ -23,7 +24,7 @@
 
             a{
                 font-family: var(--font-secundaria-bold);
-                @include text-sm-16;
+                @include text-md-20;
                 color: var(--color-azul300);
             }
         }
@@ -69,33 +70,39 @@
             }
         }
         @keyframes fade-in {
+            0% {
+                opacity: 0;
+                // height: auto;
+             
+            } 
             100% {
                 opacity: 1;
                 /*  position: relative; */
                 display: block;
-                left: 0;
+                // left: 0;
             }
         }
         @keyframes fade-out {
-            /* 0% {
+             0% {
                 opacity: 1;
-                height: auto;
+               
              
-            } */
+            } 
             100% {
-                position: absolute;
-                /*  opacity: 0;
-                display: none; */
-                top: 0;
-                left: 100%;
+                // position: absolute;
+                opacity: 0;
+                display: none; 
+                // top: 0;
+                // left: 100%;
             }
         }
     
         .hide {
-            animation: fade-out 0.3s forwards;
+            display: none; 
+            animation: fade-out 0.8s forwards;
         }
         .show {
-            animation: fade-in 0.3s forwards;
+            animation: fade-in 0.8s forwards;
         }
     
        
@@ -137,10 +144,16 @@
                 }
                 &.aprobado{
                     border: 1px solid var(--state-aprobacion-400) !important;
+                   
                 }
                
                 &:focus-visible{
-                    border: 2px solid var(--state-informacion-400) !important;               
+                    border: 2px solid var(--state-informacion-400) !important; 
+                    outline: 0;              
+                }
+                &:focus{
+                    border: 2px solid var(--state-informacion-400) !important; 
+                    outline: 0;              
                 }
             }
 
@@ -226,7 +239,7 @@
             .custom-options {
                
                 position: absolute;
-                height: 200px;
+                height: 150px;
                 overflow: auto;
                 top: 100%;
                 right: 0;
@@ -435,6 +448,7 @@
                     position: static;
                 }
             }
+           
 
             &--formulario{
                 text-align: left;
@@ -504,6 +518,10 @@
                 height: 100%;
                 p{
                     margin-top: 0;
+                }
+
+                .custom-options {               
+                    height: 200px;                    
                 }
             }
 

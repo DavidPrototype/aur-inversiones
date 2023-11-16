@@ -21,7 +21,7 @@ export default class Card extends HTMLElement {
                         <h5><strong>${titulo}</strong></h5>
                         <p>${descripcion}
                         </p>
-                        <h6 class="link"><strong>Ver más</strong></h6>
+                        <h6 class="link d-none"><strong>Ver más</strong></h6>
                         
                     </div>
                     <div class="card-promo__image">

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <meta name="robots" content="noindex" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
@@ -99,7 +100,7 @@
         
                     <div class="row justify-content-center beneficios-template--links">
                         <div class="col-6 text-center">
-                            <a href="https://bancoppel.com/inversion_bcopp/inversion.html" target="_blank">Conoce más</a>
+                            <a href="https://bancoppel.com/inversion_bcopp/pagare.html" target="_blank">Conoce más</a>
                         </div>
                     </div>          
                 </div>     
@@ -131,6 +132,7 @@
                                         >
 
                                         <input
+                                         
                                             type="text"
                                             id="mi-inversion-pagare"
                                             placeholder="$0.00"
@@ -193,7 +195,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida d-none">
+                        <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida hide">
                             <div class="inverion-formulario--resultados">
                                 <div class="datos-entrada">
                                     
@@ -516,6 +518,15 @@
         <custom-footer></custom-footer>
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/pagare.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                 if(localStorage.getItem('autenticadoInver') != 'si'){
+                          window.location.href ='login.html';  
+                      }
+                
+      
+            });
+        </script>
        
     </body>
 </html>

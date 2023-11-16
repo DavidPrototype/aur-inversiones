@@ -11,7 +11,7 @@ let correo_usuario='';
 
 let regExEmail =/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 var regExTexto = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/;
-
+let validNombre,validEmail;
 document
     .querySelector("#nombre")
     .addEventListener("input", (event) => {
@@ -23,7 +23,7 @@ document
           
         }else{            
            
-            let validNombre = regExTexto.test(nombre);          
+            validNombre = regExTexto.test(nombre);          
 
             if (!validNombre ) {
                 alertErrorNombre.classList.remove("d-none");                
@@ -33,7 +33,9 @@ document
             }else{  
                     nombre_usuario =nombre;
                     alertErrorNombre.classList.add("d-none");
-                    btnEnvio.disabled = false;
+                    if( validNombre && validEmail){
+                        btnEnvio.disabled = false;
+                    }
                 
             }
         }
@@ -50,7 +52,7 @@ document
             btnEnvio.disabled = true;
           
         }else{
-            let validEmail = regExEmail.test(event.target.value); 
+           validEmail = regExEmail.test(event.target.value); 
             if (!validEmail ) {
                 alertErrorCorreo.classList.remove("d-none");                
                 msgErrorEmail.innerText = "Ingresa un correo electrónico válido";
@@ -59,7 +61,10 @@ document
             }else{
                     correo_usuario =event.target.value;
                     alertErrorCorreo.classList.add("d-none");
-                    btnEnvio.disabled = false;
+                    if( validNombre && validEmail){
+                        btnEnvio.disabled = false;
+                    }
+                    
                 
             } 
         }

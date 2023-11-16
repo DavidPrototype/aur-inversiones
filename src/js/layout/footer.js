@@ -35,7 +35,7 @@ export default class Footer extends HTMLElement {
                    
                    <p>
                        BanCoppel, S.A., Institución de Banca Múltiple recibe las consultas, reclamaciones o
-                       aclaraciones en su Unidad Especializada de Atención a Usuarios, ubicada en 
+                       aclaraciones en su <a href="https://bancoppel.com/pdf/unidad_especializada_bancoppel_condusef.pdf" target="_blank"><span> Unidad Especializada de Atención a Usuarios<span></a>, ubicada en 
                        Av. Insurgentes Sur 553, Interior Piso 6, Colonia Escandón II Sección, C.P. 11800, Miguel Hidalgo, Ciudad de México y 
                        por  <span> correo electrónico <a href="mailto:une@bancoppel.com">une@bancoppel.com</a> </span> o <span>teléfono (55) 5278 0000 ext. 510196</span> , 
                        así como en cualquiera de sus sucursales u oficinas. En el caso de no obtener una 
@@ -123,7 +123,7 @@ export default class Footer extends HTMLElement {
                   
                </p>
                <p id="links-legal">
-                  <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5" target="_blank"> Consulta nuestros productos más destacados</a>
+                  <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4836a6a5" target="_blank"> Consulta costos y comisiones de nuestros productos</a>
                    <a href="https://www.bancoppel.com/acerca_bancoppel/terminos.html" target="_blank">Términos y Condiciones de Uso </a>
                    <a href="https://www.bancoppel.com/acerca_bancoppel/aviso.html" target="_blank"> Aviso de Privacidad </a>
                   

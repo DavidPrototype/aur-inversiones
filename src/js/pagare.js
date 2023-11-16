@@ -3,7 +3,7 @@
 import Swiper from 'swiper';
 import {  Pagination } from 'swiper/modules';
 import Tooltip from 'bootstrap/js/src/tooltip'
-import { tasas,gats,rangos } from '../data/pagare'; 
+import { tasas,gats,rangos } from './data/pagare'; 
 
 // import Swiper styles
 import 'swiper/css';
@@ -170,6 +170,8 @@ let day=fechaInversion.getDate();
 let currentDate = `${day}/${month}/${year}`; 
 // console.log("The current date is " + currentDate); 
 
+let noCalculos =0;
+
 /// NUMEROS
 let regExNumber = /^[0-9$,.]+$/;
 
@@ -235,11 +237,17 @@ document
         );
     
         if (miInversion <= 0 || isNaN(miInversion)) {
-            alertErrorSaldo.classList.remove("d-none");
-            msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
+            alertErrorInversion.classList.remove("d-none");
+            msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";          
+            btnCalcular.disabled = true;
             
+        }else if (miInversion < 1000) {
+            alertErrorInversion.classList.remove("d-none");
+            msgErrorSaldo.innerText ="Monto mínimo a partir de $1,000";
+               
+            btnCalcular.disabled = true;
         }else{
-           
+            noCalculos++;
             calcular_inversion_pagare(miInversion,inputTiempo.value);
         }
        
@@ -328,8 +336,10 @@ document
             document.getElementById('fecha-vence').innerText = fechaVencimiento;
             
             simulador.classList.add('resultados');
-            document.querySelector('.inverion-formulario--entrada').classList.add('resultados')
+            document.querySelector('.inverion-formulario--entrada').classList.add('resultados','show')
             document.querySelector('.inverion-formulario--salida').classList.add('resultados')
-            salidaSimulador.classList.remove('d-none');
+            // salidaSimulador.classList.remove('d-none');
+            salidaSimulador.classList.remove('hide');
+            salidaSimulador.classList.add('show');
     }
         

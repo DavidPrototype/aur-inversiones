@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <meta name="robots" content="noindex" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
@@ -26,7 +27,7 @@
                                 tipo="secundario"
                                 titulo="Inversión Creciente"
                                 subtitulo="Recoge los frutos de tu inversión y cumple tus planes"
-                                texto-boton="Solicitar asesoria"
+                                texto-boton="Solicitar asesoría"
                                 link-boton="asesoria.html"
                                 imagen="img/hero-inver-creciente.png"
                                 imagen-webp="img/hero-inver-creciente.webp"
@@ -180,7 +181,7 @@
                                             >
                                            
                                                 <select name="sources" id="tiempo" class="custom-select sources" data-placeholder="Seleccionar">
-                                                    <option value="" selected >Seleccionar</option>
+                                                    <!-- <option  id="no-opcion" value="" selected >Seleccionar</option> -->
                                                     <option value="1">1 mes</option>
                                                     <option value="2">2 meses</option>
                                                     <option value="3">3 meses</option>
@@ -223,7 +224,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida d-none">
+                            <div class="col-12 col-lg-8 col-xl-6 inverion-formulario--salida hide">
                                 <div class="inverion-formulario--resultados">
                                     <div class="datos-entrada">
                                         
@@ -534,7 +535,11 @@
         <script type="module" src="./js/main.js"></script>
         <script type="module" src="./js/inversion-creciente.js"></script>
         <script>
-            var $customSelect = $( '.custom-select' );
+            document.addEventListener('DOMContentLoaded', function () {
+                if(localStorage.getItem('autenticadoInver') != 'si'){
+                    window.location.href ='login.html';  
+                }
+                var $customSelect = $( '.custom-select' );
 	var $resetButton = $( '#resetButton' );
 
 
@@ -631,6 +636,9 @@
 		}, 500 );
 	}
 
+
+            });
         </script>
+        
     </body>
 </html>
