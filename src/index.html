@@ -9,8 +9,22 @@
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
+   
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NZSZSKRS');</script>
+  <!-- End Google Tag Manager -->
+  
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZSZSKRS"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  
     <custom-header nav-active="nav-inicio" ></custom-header>
     <main class="main-home">
       <section class="section-hero">
@@ -49,8 +63,8 @@
 
           <div class="row">
             <div class="col-12 col-lg-6">
-              <a href="inversioncreciente.html" class="link-nodecoration">
-                <div class="inversion--card">
+              
+                <div class="inversion--card" >
                   <picture class="imagen">
                     <svg  width="186" height="217" viewBox="0 0 186 217" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path class="mano" d="M95.8817 200.17C94.0428 200.17 92.204 200.006 90.3886 199.678L37.0327 189.974C32.3009 189.114 28.8633 184.997 28.8633 180.189V164.33C28.8633 155.885 35.1997 148.887 43.6034 148.044C56.446 146.762 69.3414 149.133 80.8898 154.908L87.3492 158.134C87.9817 158.451 88.6903 158.62 89.3989 158.62H107.951C112.343 158.62 116.109 161.332 117.667 165.173L142.995 158.117C147.727 156.313 153.167 158.415 155.439 162.96C156.628 165.337 156.821 168.031 155.978 170.555C155.141 173.073 153.366 175.117 150.989 176.306L109.79 196.902C105.486 199.057 100.69 200.17 95.8876 200.17H95.8817Z" fill="#275BA7"/>
@@ -81,13 +95,13 @@
                     <p class="descripcion">
                       Retira tu dinero cuando lo necesites sin penalizaciones.
                     </p>
-                    <a class="enlace" href="inversioncreciente.html">¿Cuánto crece?</a>
+                    <a class="enlace" target="_blank" href="inversioncreciente.html" id="inv-card">¿Cuánto crece?</a>
                   </div>
                 </div>
-              </a>
+             
             </div>
             <div class="col-12 col-lg-6">
-              <a href="pagare.html" class="link-nodecoration">
+              
                 <div class="inversion--card">
                   <picture class="imagen">
                     <svg width="186" height="217" viewBox="0 0 186 217" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,10 +136,10 @@
                     <p class="descripcion">
                       Cumple tus metas financieras y elige un plazo para retirar.
                     </p>
-                    <a class="enlace" href="pagare.html">¿Cuánto gano?</a>
+                    <a class="enlace" target="_blank" href="pagare.html" id="pagare-card">¿Cuánto gano?</a>
                   </div>
                 </div>
-              </a>
+              
             </div>
           </div>
         </div>
@@ -278,7 +292,7 @@
                     <div class="alerta--contenido">
                         <p class="titulo">Nuestra prioridad es cuidar tu dinero y ayudarte a crecer </p>
                         <p class="descripcion">Puedes elegir ambas oportunidades de crecimiento para maximizar tus ganancias.</p>
-                        <p class="descripcion">Acude a <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank">Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank">App BanCoppel*.</a></p>                        
+                        <p class="descripcion">Acude a <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank" id="bene-sucursal">Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank" id="bene-app">App BanCoppel*.</a></p>                        
                     </div>
                  </div><!-- alerta -->
                  
@@ -301,7 +315,7 @@
             </div>
             <div class="row simuladores--cards">
               <div class="col-12 col-lg-6 col-xl-3">
-                <a href="inversioncreciente.html">
+                <a href="inversioncreciente.html" id="link-card-inversion" >
 
                   <div class="simulador-card">
                           
@@ -327,7 +341,7 @@
                 </a>    
               </div>
               <div class="col-12 col-lg-6 col-xl-3">
-                <a href="pagare.html">  
+                <a href="pagare.html" id="link-card-pagare" >  
                 <div class="simulador-card">
                         <picture>
                           <img

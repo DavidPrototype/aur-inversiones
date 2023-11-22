@@ -127,10 +127,17 @@
         }
         .conceptos-container-swiper {
             .swiper {
+               
                 --bs-gutter-x: 128px;
                 width: 100%;
                 padding: var(--spacing07) calc(var(--bs-gutter-x) * 0.5);
-
+                .swiper-wrapper{
+                    margin-left: 24px;
+                    
+                }
+                .swiper-slide:nth-last-child(4) {
+                    margin-right:64px;
+                }
                 .swiper-slide {
                     width: auto;
                     padding: 0;
@@ -138,6 +145,8 @@
                         width: 196px;
                     }
                 }
+               
+               
                 .swiper-pagination{
                     display: block;
                 }
@@ -181,22 +190,29 @@
         
         }
         .swiper {
+           
             .swiper-wrapper {
+               
+               
                 margin-bottom: var(--spacing08);
             }
         }
-
+        
         .no-slide {
+           
             --bs-gutter-x: auto;
             .swiper {
+               
                 --bs-gutter-x: auto;
                 .swiper-wrapper {
+                    
                     flex-flow: row wrap;
                     flex-direction: row;
                     align-items: stretch;
                     justify-content: center;
                     row-gap: var(--spacing04);
                     column-gap: var(--spacing04);
+                    margin-left: 0;
 
                     .swiper-slide {
                         flex: 0 1 253px;
@@ -269,6 +285,7 @@
             }
             #card2 {
                 order: 5;
+                margin-right: 0;
             }
             #card3 {
                 order: 6;

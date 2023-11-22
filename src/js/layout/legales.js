@@ -9,7 +9,7 @@ export default class Legales extends HTMLElement {
         <div class="custom-container">
           <div class="row">
              <div class="col-12 legales--imagen">
-                  <picture>
+                  <picture id="img-ipab">
                     <source
                         srcset="img/ipab.webp"
                         type="image/webp"
@@ -20,7 +20,7 @@ export default class Legales extends HTMLElement {
                     />
                 </picture>
                
-                  <p>Inversión Creciente y Pagaré son productos garantizados por el IPAB hasta por 400 mil UDIS. <a data-bs-toggle="modal" data-bs-target="#modal-salida-ipab">www.ipab.org.mx</a></p>
+                  <p>Inversión Creciente y Pagaré son productos garantizados por el IPAB hasta por 400 mil UDIS. <a data-bs-toggle="modal" data-bs-target="#modal-salida-ipab" id="link-ipab">www.ipab.org.mx</a></p>
                
              </div>
              <div class="col-12 legales--info">

@@ -203,7 +203,7 @@
                 height: 8px;
             }
             .irs--round .irs-from, .irs--round .irs-to, .irs--round .irs-single {
-               
+                display: none;
                 background-color:var(--color-azul300);
                 color: white;
                 border-radius: 4px;

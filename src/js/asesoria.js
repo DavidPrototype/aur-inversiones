@@ -32,6 +32,7 @@ document
                 btnEnvio.disabled = true;
             }else{  
                     nombre_usuario =nombre;
+                    metrica3C('Nombre completo');
                     alertErrorNombre.classList.add("d-none");
                     if( validNombre && validEmail){
                         btnEnvio.disabled = false;
@@ -60,6 +61,7 @@ document
                 btnEnvio.disabled = true;
             }else{
                     correo_usuario =event.target.value;
+                    metrica3C('Correo electrónico');
                     alertErrorCorreo.classList.add("d-none");
                     if( validNombre && validEmail){
                         btnEnvio.disabled = false;
@@ -82,7 +84,56 @@ document
             msgErrorEmail.innerText = "Debes ingresar un correo electrónico";
             btnEnvio.disabled = true;
        }else{
+        metrica3B();
         window.location.href='envio.html';
        }
        
-});    
+});
+
+//Metricas
+dataLayer.push({
+    page:'/inversiones/listo-para-invertir',
+    title:'Inversiones - Listo para invertir', 
+    event:'pvGeneral'               
+ });
+
+ //Metrica 3A
+
+ document.getElementById('lnk-asesor-aviso').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Listo para invertir',
+        nd2:'Aviso de Privacidad',
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+ document.getElementById('lnk-asesor-tyc').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Listo para invertir',
+        nd2:'Términos y Condiciones',
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+     });
+ })
+
+ function metrica3B(){
+    dataLayer.push({
+        nd1:'Inversiones - Listo para invertir',
+        nd2:'Enviar',
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+        });
+ }
+
+ function metrica3C(textoInput){
+    dataLayer.push({
+        nd1:'Inversiones - Listo para invertir',
+        nd2:'Input: '+ textoInput,
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+        });
+ }

@@ -1,10 +1,10 @@
-.header {
-    .nav {
-        &--menu {
-            display: none;
-        }
-    }
-}
+// .header {
+//     .nav {
+//         &--menu {
+//             display: none;
+//         }
+//     }
+// }
 
 .main-asesoria{
   padding-top: 2rem;
@@ -150,6 +150,7 @@
     .main-asesoria{
         padding: 2.5rem 0 4rem 0;
         overflow: hidden;
+        min-height: 890px;
         .custom-container{
             padding: 0 calc( var(--bs-gutter-x) * 0.5  );
             .row  {

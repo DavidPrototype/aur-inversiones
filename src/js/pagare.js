@@ -139,15 +139,6 @@ const tooltip = new Tooltip(ayudaElem);
 
 // console.log(tooltip)
 
-$(".js-range-slider").ionRangeSlider({
-    skin: "round",
-    min: 28,
-    max: 360,
-    values:[28,120,210,360],
-    postfix: " dias",  
-    grid: true,
-    hide_min_max: true,
-});
 
 /**
  * SIMULADOR PAGARE
@@ -170,7 +161,21 @@ let day=fechaInversion.getDate();
 let currentDate = `${day}/${month}/${year}`; 
 // console.log("The current date is " + currentDate); 
 
+
+//Variables de calculos
 let noCalculos =0;
+let montoInvertirPagare =0;
+let tasaPagare=0;
+let isrPagare=0;
+let interesBrutoPagare=0;
+let interesNetoPagare=0;
+let subtotalPagare=0;
+let montoFinalPagare=0;
+let calculoISRPagare=0;
+let gatNominalPagare=0;
+let gatRealPagare=0;
+let fecha_vencePagare='';
+let plazoPagare='';
 
 /// NUMEROS
 let regExNumber = /^[0-9$,.]+$/;
@@ -214,6 +219,7 @@ document
                     btnCalcular.disabled = true;
                 } else {
                     btnCalcular.disabled = false;
+                   metrica4o('Monto Inversion');
                 }
             }
         }
@@ -240,22 +246,40 @@ document
             alertErrorInversion.classList.remove("d-none");
             msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";          
             btnCalcular.disabled = true;
-            
+            metrica4J("Debes ingresar un monto para calcular");
         }else if (miInversion < 1000) {
             alertErrorInversion.classList.remove("d-none");
-            msgErrorSaldo.innerText ="Monto mínimo a partir de $1,000";
-               
+            msgErrorSaldo.innerText ="Monto mínimo a partir de $1,000";               
             btnCalcular.disabled = true;
+            metrica4J("Monto mínimo a partir de $1,000");
         }else{
-            noCalculos++;
+           
+            if(btnCalcular.innerText == 'Volver a calcular' && noCalculos >=1 ){
+                 metrica4K(miInversion,inputTiempo.value);
+            }
+            if(noCalculos ==0){
+                metrica4D(miInversion,inputTiempo.value)
+            }
             calcular_inversion_pagare(miInversion,inputTiempo.value);
+            metrica4L(
+                miInversion,
+                inputTiempo.value,
+                montoFinalPagare,
+                calculoISRPagare,
+                tasaPagare,
+                gatNominalPagare,
+                gatRealPagare,
+                fecha_vencePagare
+            );
+
+           
         }
        
        
     });
 
     function calcular_inversion_pagare(miInversion,plazo){
-       
+        noCalculos++;
         btnCalcular.innerText = 'Volver a calcular';
         plazo = parseInt(plazo);       
         
@@ -293,7 +317,20 @@ document
         interesNeto = interesBruto - calculoISR;
         montoFinal = miInversion + interesNeto;
 
-        // console.log(miInversion,interesBruto, gatNominal, gatReal);
+        //INI: Asignacion de variables para registrar actividad
+            montoInvertirPagare=miInversion;
+            plazoPagare=plazo;
+            tasaPagare=tasa;
+            isrPagare=isr;
+            interesBrutoPagare=interesBruto;
+            interesNetoPagare=interesNeto;
+            subtotalPagare=subtotal;
+            montoFinalPagare=montoFinal;
+            calculoISRPagare=calculoISR;
+            gatNominalPagare=gatNominal;
+            gatRealPagare=gatReal;
+            fecha_vencePagare=fecha_vence;
+        //FIN:Asignacion de variables para registrar actividad
 
         mostrar_detalle_pagare(montoFinal,miInversion,plazo,tasa,calculoISR,gatNominal, gatReal,fecha_vence);
         
@@ -341,5 +378,399 @@ document
             // salidaSimulador.classList.remove('d-none');
             salidaSimulador.classList.remove('hide');
             salidaSimulador.classList.add('show');
+
+            //Metrica
+            metrica4N(
+
+                miInversion,
+                plazo,
+                montoFinal.toFixed(2),
+                calculoISR.toFixed(2),
+                tasa,
+                gat_nominal,
+                gat_real,
+                fechaVencimiento
+            )
     }
         
+//Metricas 
+dataLayer.push({
+    page:'/inversiones/pagare',
+    title:'Inversiones - Pagaré' ,
+    event:'pvGeneral'               
+ });
+
+ document.getElementById('btn-asesoria-pag').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Solicitar asesoría',
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+        });
+ });
+
+ document.getElementById('lnk-conoce-pag').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Elige un plazo que se ajuste a tus metas',
+        nd3:'Conoce más',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+
+ document.getElementById('lnk-gat-pagare').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Descubre cuánto puedes ganar con Pagaré',
+        nd3:'Para conocer la GAT: Consulta las tasas de Pagaré',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+//Metrica 4F
+document.getElementById('lnk-reqpag-sucursal').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Te acompañamos en tu camino de inversión',
+        nd3:'Acude a sucursal',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+ document.getElementById('lnk-reqpag-app').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Te acompañamos en tu camino de inversión',
+        nd3:'App BanCoppel',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+
+ //Metrica 4G
+
+const accordionItemsPag = document.querySelectorAll('#faqs-pagare-container custom-accordion .accordion-item h2');
+accordionItemsPag.forEach(accordionItem => {
+    accordionItem.addEventListener('click',function(){
+        
+        dataLayer.push({
+            nd1:'Inversiones - Pagaré',
+            nd2:'Preguntas frecuentes',
+            nd3:accordionItem.innerText,
+            nd4:'',
+            event:'inversiones'
+            });
+      
+    })
+});
+//Metrica 4h ,4I
+document.getElementById('img-ipab').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Sección inferior',
+        nd3:'IPAB',
+        nd4:'',
+        event:'inversiones'
+        });
+
+});
+document.getElementById('link-ipab').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Sección inferior',
+        nd3:'www.ipab.org.mx',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+ //Metrica 4E
+
+ document.getElementById('lnk-con-req-pagare').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'¿Qué necesitas?',
+        nd3:'Conoce más',
+        nd4:'',
+        event:'inversiones'
+        });
+ })
+
+ document.getElementById('lnk-simupag-ases').addEventListener('click',()=>{
+     metrica4M(
+        montoInvertirPagare,
+        plazoPagare,
+        montoFinalPagare,
+        calculoISRPagare,
+        tasaPagare,
+        gatNominalPagare,
+        gatRealPagare,
+        fecha_vencePagare
+    );
+
+
+ })
+
+ //Metrica 5 y 5a
+
+                const modalIpab = document.querySelector('modal-salida[id-modal="modal-salida-ipab"] .modal')
+                modalIpab.addEventListener('shown.bs.modal', () => {
+                    dataLayer.push({
+                        nd1:'Inversiones',
+                        nd2:'Modal: Estás a punto de salir del sitio de Inversiones BanCoppel - Llegada',
+                        nd3:'Página: Pagaré',
+                        nd4:'',
+                        event:'inversiones'
+                    });
+                    
+                })
+                const modalIpabBtn = document.querySelector('modal-salida[id-modal="modal-salida-ipab"] .modal custom-boton')
+                modalIpabBtn.addEventListener('click',function(){
+                    dataLayer.push({
+                        nd1:'Inversiones',
+                        nd2:'Modal: Estás a punto de salir del sitio de Inversiones BanCoppel - Continuar',
+                        nd3:'Página: Pagaré',  
+                        nd4:'',
+                        event:'inversiones'
+                        });
+                });
+
+
+ //metrica 4D
+ function metrica4D(montoInvertirPagare,tiempoPagare){
+    let  tiempoPag = tiempoPagare == 1 ? tiempoPagare+ ' dia' : tiempoPagare+ ' dias';
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Descubre cuánto puedes ganar con Pagaré',
+        nd3:'Calcular',
+        nd4:'',
+        montoInvertirPagare: montoInvertirPagare, //Sin comas, sin signos
+        tiempoPagare: tiempoPag,
+        event:'inversionesPagare'
+        });
+ }
+
+ //Metrica 4K
+
+ function metrica4K(montoInvertirPagare,tiempoPagare){
+    let  tiempoPaga = tiempoPagare == 1 ? tiempoPagare+ ' dia' : tiempoPagare+ ' dias';
+    dataLayer.push({
+            nd1:'Inversiones - Pagaré',
+            nd2:'Descubre cuánto puedes ganar con Pagaré',
+            nd3:'Volver a calcular',
+            nd4:'',
+            montoInvertirPagare: montoInvertirPagare, //Sin comas, sin signos
+            tiempoPagare: tiempoPaga,
+            event:'inversionesPagare'
+    });
+ }
+
+//Metrica 4J
+function metrica4J(textoAlerta){
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Descubre cuánto puedes ganar con Pagaré',
+        nd3:'Alerta input: '+ textoAlerta,
+        nd4:'',
+        event:'inversiones'
+        });
+}
+
+//Metrica 4L
+
+function metrica4L(
+    montoInvertirPagare,
+    tiempoPagare,
+    montoFinalPagare,
+    montoISRPagare,
+    tasaRendimientoPagare,
+    GATNominalPagare,
+    GATRealPagare,
+    fechaVencimiento
+)
+{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Resultado simulador',
+        nd3:'Llegada',
+        nd4:'',
+        montoInvertirPagare:montoInvertirPagare,
+        tiempoPagare:tiempoPagare +' dias',
+        montoFinalPagare:montoFinalPagare.toFixed(2),
+        montoISRPagare:montoISRPagare.toFixed(2),
+        tasaRendimientoPagare:tasaRendimientoPagare.toFixed(2),
+        GATNominalPagare:GATNominalPagare  < 1 ? GATNominalPagare * -1 : GATNominalPagare ,
+        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare ,
+        fechaVencimiento:fechaVencimiento,
+        event:'inversionesPagareSimulador'
+        });
+}
+
+//Metrica 4M
+
+function metrica4M(
+    montoInvertirPagare,
+    tiempoPagare,
+    montoFinalPagare,
+    montoISRPagare,
+    tasaRendimientoPagare,
+    GATNominalPagare,
+    GATRealPagare,
+    fechaVencimiento
+)
+
+{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Resultado simulador',
+        nd3:'Solicitar asesoría',
+        nd4:'',
+        montoInvertirPagare:montoInvertirPagare,
+        tiempoPagare:tiempoPagare +' dias',
+        montoFinalPagare:montoFinalPagare.toFixed(2),
+        montoISRPagare:montoISRPagare.toFixed(2),
+        tasaRendimientoPagare:tasaRendimientoPagare.toFixed(2),
+        GATNominalPagare:GATNominalPagare < 1 ?  GATNominalPagare * -1 : GATNominalPagare,
+        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare,
+        fechaVencimiento:fechaVencimiento,
+        event:'inversionesPagareSimulador'
+        });
+}
+
+//Metrica 4N
+
+function metrica4N(
+
+    montoInvertirPagare,
+    tiempoPagare,
+    montoFinalPagare,
+    montoISRPagare,
+    tasaRendimientoPagare,
+    GATNominalPagare,
+    GATRealPagare,
+    fechaVencimiento
+)
+{
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Resultado simulador',
+        nd3:'Información fecha de vencimiento',
+        nd4:'',
+        montoInvertirPagare:montoInvertirPagare,
+        tiempoPagare:tiempoPagare,
+        montoFinalPagare:montoFinalPagare,
+        montoISRPagare:montoISRPagare,
+        tasaRendimientoPagare:tasaRendimientoPagare,
+        GATNominalPagare:GATNominalPagare < 1 ? GATNominalPagare * -1 : GATNominalPagare,
+        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare,
+        fechaVencimiento:fechaVencimiento,
+        event:'inversionesPagareSimulador'
+        });
+}
+
+//Metrica 4 o
+function metrica4o(nombreInput){
+    dataLayer.push({
+        nd1:'Inversiones - Pagaré',
+        nd2:'Ingresa los datos',
+        nd3:'Input: '+ nombreInput,
+        nd4:'',
+        event:'inversiones'
+        });
+}
+
+//Metricas Header
+document.getElementById('lnk-logo').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Logo',
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-inicio').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Inicio',
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-inversion').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Inversión Creciente',
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-pagare').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Pagaré',
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+//Footer Metricas
+const acercaFooterSec = document.querySelectorAll('footer #acerca ul li a');
+acercaFooterSec.forEach(element => {
+    element.addEventListener('click',function(){
+        dataLayer.push({
+            nd1:'Inversiones - Footer',
+            nd2:'Acerca de BanCoppel - '+ element.innerText, 
+            nd3:'Página: Pagaré',
+            nd4:'',
+            event:'inversiones'
+            });
+     
+    });    
+});
+
+const unidadLinkFooter = document.querySelectorAll('footer #unidad a');
+        unidadLinkFooter.forEach(unidad => {
+            unidad.addEventListener('click',function(){
+                
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Unidad Especializada Bancoppel Condusef - '+ unidad.innerText, 
+                    nd3:'Página: Pagaré',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+});
+
+const legalesFooter = document.querySelectorAll('.footer--legales #links-legal a');
+        legalesFooter.forEach(legal => {
+            legal.addEventListener('click',function(){
+                
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Legales - '+ legal.innerText, 
+                    nd3:'Página: Pagaré',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+});
+
+const socialesFooter = document.querySelectorAll('.footer--socials img')
+    socialesFooter.forEach(social => {
+            social.addEventListener('click',function(){
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Contacto - '+ social.getAttribute('title'), 
+                    nd3:'Página: Pagaré',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+})

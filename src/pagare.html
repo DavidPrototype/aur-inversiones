@@ -12,13 +12,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.1/js/ion.rangeSlider.min.js"></script>
-
-       
+ 
+        <!-- Google Tag Manager -->
+ <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NZSZSKRS');</script>
+    <!-- End Google Tag Manager -->     
 
       
     </head>
     <body>
-    
+      <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZSZSKRS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
         <custom-header nav-active="nav-pagare"></custom-header>
         <main class="main-pagare">
@@ -31,6 +40,7 @@
                             subtitulo="Disfruta los beneficios de invertir y decide cuándo retirar tu dinero"
                             texto-boton="Solicitar asesoría"
                             link-boton="asesoria.html"
+                            id-boton="btn-asesoria-pag"
                             imagen="img/hero-pagare.png"
                             imagen-webp="img/hero-pagare.webp"
                         >
@@ -100,7 +110,7 @@
         
                     <div class="row justify-content-center beneficios-template--links">
                         <div class="col-6 text-center">
-                            <a href="https://bancoppel.com/inversion_bcopp/pagare.html" target="_blank">Conoce más</a>
+                            <a href="https://bancoppel.com/inversion_bcopp/pagare.html" target="_blank" id="lnk-conoce-pag">Conoce más</a>
                         </div>
                     </div>          
                 </div>     
@@ -180,6 +190,7 @@
                                             <a 
                                               href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=48351fa0"
                                               target="_blank"
+                                              id="lnk-gat-pagare"
                                             >
                                                 Para conocer la GAT: Consulta las
                                                 tasas de Inversión Creciente
@@ -235,7 +246,7 @@
                                         línea de crédito específica. 
                                     </p>
                                     <p class="datos-entrada--link">
-                                        <a href="asesoria.html">Solicitar asesoría</a>
+                                        <a href="asesoria.html" id="lnk-simupag-ases">Solicitar asesoría</a>
                                     </p>
                                    
                                 </div>
@@ -351,7 +362,7 @@
                                 </li>
                             </ul>
                             <p>
-                                <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4534a0a0" target="_blank">Conoce más</a>
+                                <a href="https://www.bancoppel.com/imagenes/1001/pdf.php?id=4534a0a0" target="_blank" id="lnk-con-req-pagare">Conoce más</a>
                             </p>
                         </div>
                     </div>
@@ -367,7 +378,7 @@
                               </picture>
                               <div class="alerta--contenido">
                                   <p class="titulo">Te acompañamos en tu camino de inversión</p>                                      
-                                  <p class="descripcion"> <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank">Acude a Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank">App BanCoppel*.</a></p>                        
+                                  <p class="descripcion"> <a href="https://www.bancoppel.com/geolocalizacion/index.html" target="_blank" id="lnk-reqpag-sucursal">Acude a Sucursal</a> o realiza el trámite en la <a href="https://bancoppe.onelink.me/UapG/2tfl0zny" target="_blank" id="lnk-reqpag-app">App BanCoppel*.</a></p>                        
                               </div>
                            </div><!-- alerta -->
                            
@@ -484,7 +495,7 @@
                                 >
                             </h2>
                         </div>
-                        <div class="col-12 col-xl-6">
+                        <div class="col-12 col-xl-6" id="faqs-pagare-container">
                             <div class="accordion" id="accordionExample">
                                 <custom-accordion
                                     id="faq-1"
@@ -522,8 +533,18 @@
             document.addEventListener('DOMContentLoaded', function () {
                  if(localStorage.getItem('autenticadoInver') != 'si'){
                           window.location.href ='login.html';  
-                      }
-                
+                  }
+               
+                      $(".js-range-slider").ionRangeSlider({
+                            skin: "round",
+                            min: 28,
+                            max: 360,
+                            values:[28,120,210,360],
+                            postfix: " dias",  
+                            grid: true,
+                            hide_min_max: true,
+                         });
+
       
             });
         </script>

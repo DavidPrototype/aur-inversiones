@@ -8,6 +8,8 @@ import data from './data/inversiones';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+
+
 /* VALIDACION SLIDES */
 
 const breakpoint = window.matchMedia(
@@ -148,6 +150,7 @@ const alertErrorTiempo = document.querySelector(".error-tiempo");
 const btnCalcular = document.querySelector("#btn-inversion button");
 const selectTiempo = document.getElementById('tiempo');
 let options=  document.querySelectorAll('.custom-option');
+let noCalculos =0;
 
 //inputs
 let inputInversion = document.getElementById("mi-inversion");
@@ -158,7 +161,20 @@ let inputInversion = document.getElementById("mi-inversion");
 let msgErrorSaldo = document.querySelector(".error-inversion .mensaje");
 let msgErrorTiempo = document.querySelector(".error-tiempo .mensaje");
 
+//Valores de calculos
+
 let miInversion = 0;
+let plazoInversion=0;
+let plazoHastaInversion=0;
+let tasaInversion=0;
+let interesBrutoInversion=0;
+let montoFinalInversion=0;
+let isrInversion=0;
+let isrCapitalInversion=0;
+let monto_exentoInversion=0;
+let gat_nominalInversion=0;
+let gat_realInversion=0;
+let premioInversion=0;
 
 /// NUMEROS
 let regExNumber = /^[0-9$,.]+$/;
@@ -208,6 +224,7 @@ inputInversion.addEventListener("input", (event) => {
 
                     inputInversion.classList.remove('error');
                     inputInversion.classList.add('aprobado');
+                    metrica2M('Monto Inversion');
                     btnCalcular.disabled = false;
                 }
             }
@@ -227,6 +244,7 @@ inputInversion.addEventListener("input", (event) => {
             // console.log(option.dataset.value)
             if(option.dataset.value !=''){
                 alertErrorTiempo.classList.add("d-none");
+                metrica2M('Tiempo');
                 btnCalcular.disabled = false;               
             }else{
                 alertErrorTiempo.classList.remove("d-none");
@@ -254,6 +272,7 @@ btnCalcular.addEventListener('click',(e)=>{
     if (miInversion <= 0 || isNaN(miInversion)) {
         alertErrorInversion.classList.remove("d-none");
         msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
+        metrica2I('Debes ingresar un monto para calcular');
         
     }else if (miInversion < 1000) {
         inputInversion.classList.add('error');
@@ -261,14 +280,25 @@ btnCalcular.addEventListener('click',(e)=>{
         msgErrorSaldo.innerText =
             "Monto mínimo a partir de $1,000";           
         btnCalcular.disabled = true;
+        metrica2I('Monto mínimo a partir de $1,000');
         
     }else if(selectTiempo.value =='' || valorSelect =='Seleccionar') {
         alertErrorTiempo.classList.remove("d-none");
         msgErrorTiempo.innerText  = "Selecciona un plazo";
         btnCalcular.disabled = true; 
+        metrica2I('Selecciona un plazo');
     }
     else{
         alertErrorTiempo.classList.add("d-none");
+        //Metrica 2J
+        if(btnCalcular.innerText == 'Volver a calcular' && noCalculos >=1 ){
+            metrica2J(miInversion,selectTiempo.value);
+        }
+
+        if(noCalculos ==0){
+            metrica2D(miInversion, selectTiempo.value);
+        }
+        // metrica2D(miInversion, plazo);
         calcular_inversion(miInversion,selectTiempo.value);
     }
    
@@ -279,6 +309,7 @@ function calcular_inversion(miInversion, plazo){
        
     // console.log(miInversion,plazo)
     // console.log(data);
+    noCalculos++;
     btnCalcular.innerText = 'Volver a calcular';
     plazo = parseInt(plazo);
     const tablaInversion = data.filter((elem) => elem[0] == plazo )
@@ -309,8 +340,23 @@ function calcular_inversion(miInversion, plazo){
 
         premio =montoPremio - montoPeriodos;
     }
-
+    //Asignacion de variables para seguimiento
+     plazoInversion=plazo;
+     plazoHastaInversion=plazoHasta;
+     tasaInversion=tasa;
+     interesBrutoInversion=interesBruto;
+     montoFinalInversion=montoFinal;
+     isrInversion=isr;
+     isrCapitalInversion=isrCapital;
+     monto_exentoInversion=monto_exento;
+     gat_nominalInversion=gat_nominal;
+     gat_realInversion=gat_real;
+     premioInversion=premio;
+    //Fin de asignacion
+   
     mostrar_detalle(montoFinal,plazo,premio,tasa,isr,gat_nominal, gat_real);
+    //Metrica 2K
+    metrica2K(miInversion,plazo,montoFinal,montoFinal,premio,interesBruto,tasa,gat_nominal,gat_real)
     
 }
 
@@ -430,4 +476,352 @@ function monto_final_premio(tablaInveriones=[],diffDias=[],monto_inicial,monto_e
 
 
 
-// monto_periodo(35959.10,7.46,31,189222,0.15)
+//METRICAS
+//Metrica 2
+dataLayer.push({
+    page:'/inversiones/inversion-creciente',
+    title:'Inversiones - Inversión creciente' ,
+    event:'pvGeneral'               
+});
+
+//Metrica 2A
+document.getElementById('btn-asesoria-inv').addEventListener('click',()=>{
+
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Solicitar asesoría',
+        nd3:'',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+
+//Metrica 2B
+document.getElementById('link-conoce-inv').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'¡Gana un premio!',
+        nd3:'Conoce más',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+//Metrica 2C
+document.getElementById('link-gat-inv').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Descubre cuánto aumenta tu dinero con Inversión Creciente',
+        nd3:'Para conocer la GAT: Consulta las tasas de Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+//Metrica 2D
+function metrica2D(montoInvertir,tiempo){
+    let  tiempoMetrica = tiempo == 1 ? tiempo+ ' mes' : tiempo+ ' meses';
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Descubre cuánto aumenta tu dinero con Inversión Creciente',
+        nd3:'Calcular',
+        nd4:'',
+        montoInvertir:montoInvertir , //Sin comas, sin signos,
+        tiempo: tiempoMetrica,
+        event:'inversionesCreciente'
+        });
+}
+
+//Metrica 2E
+
+document.getElementById('lnk-conc-reqInv').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'¿Qué necesitas?',
+        nd3:'Conoce más',
+        nd4:'',
+        event:'inversiones'
+        });
+})
+
+//Metrica 2F
+
+document.getElementById('lnk-sucursal-inv').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Te acompañamos en tu camino de inversión',
+        nd3:'Acude a sucursal',
+        nd4:'',
+        event:'inversiones'
+    });
+})
+document.getElementById('lnk-app-inv').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Te acompañamos en tu camino de inversión',
+        nd3:'App BanCoppel',
+        nd4:'',
+        event:'inversiones'
+    });
+})
+
+//Metrica 2G
+const accordionItems = document.querySelectorAll('#faqs-inv-container custom-accordion .accordion-item h2');
+accordionItems.forEach(accordionItem => {
+    accordionItem.addEventListener('click',function(){
+        
+        dataLayer.push({
+            nd1:'Inversiones - Inversión creciente',
+            nd2:'Preguntas frecuentes',
+            nd3:accordionItem.innerText,
+            nd4:'',
+            event:'inversiones'
+        });
+      
+    })
+});
+
+//Metrica 2H
+document.getElementById('img-ipab').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Sección inferior',
+        nd3:'IPAB',
+        nd4:'',
+        event:'inversiones'
+     });
+
+});
+document.getElementById('link-ipab').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Sección inferior',
+        nd3:'www.ipab.org.mx',
+        nd4:'',
+        event:'inversiones'
+     });
+});
+//Metrica 5 y 5a
+
+const modalIpabInver = document.querySelector('modal-salida[id-modal="modal-salida-ipab"] .modal')
+modalIpabInver.addEventListener('shown.bs.modal', () => {
+    dataLayer.push({
+        nd1:'Inversiones',
+        nd2:'Modal: Estás a punto de salir del sitio de Inversiones BanCoppel - Llegada',
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+    });
+    
+})
+const modalIpabBtnInver = document.querySelector('modal-salida[id-modal="modal-salida-ipab"] .modal custom-boton')
+modalIpabBtnInver.addEventListener('click',function(){
+    dataLayer.push({
+        nd1:'Inversiones',
+        nd2:'Modal: Estás a punto de salir del sitio de Inversiones BanCoppel - Continuar',
+        nd3:'Página: Inversión Creciente',  
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+document.getElementById('lnk-siminver-asesoria').addEventListener('click',()=>{
+    metrica2L(
+        miInversion,
+        plazoInversion,
+        montoFinalInversion,
+        montoFinalInversion,
+        premioInversion,
+        interesBrutoInversion,
+        tasaInversion,
+        gat_nominalInversion,
+        gat_realInversion
+)
+
+
+
+});
+
+
+
+//Metrica 2I
+
+function metrica2I(textoAlerta){
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Ingresa tus datos',
+        nd3:textoAlerta,
+        nd4:'',
+        event:'inversiones'
+        });
+}
+//Metrica 2J
+function metrica2J(montoInvertir, tiempo){
+   let  tiempoMetrica = tiempo == 1 ? tiempo+ ' mes' : tiempo+ ' meses';
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Descubre cuánto aumenta tu dinero con Inversión Creciente',
+        nd3:'Volver a calcular',
+        nd4:'',
+        montoInvertir: montoInvertir, //Sin comas, sin signos,
+        tiempo: tiempoMetrica,
+        event:'inversionesCreciente'
+        });
+}
+
+function metrica2K(montoInvertir,tiempo,montoFinal,montoSinPremio,montoPremio,montoISR,tasaRendimiento,GATNominal,GATReal){
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Resultado simulador',
+        nd3:'Llegada',
+        nd4:'',
+        montoInvertir:montoInvertir,
+        tiempo:tiempo,
+        montoFinal:montoFinal.toFixed(2),
+        montoSinPremio:montoSinPremio.toFixed(2),
+        montoPremio:montoPremio.toFixed(2),
+        montoISR:montoISR.toFixed(2),
+        tasaRendimiento:tasaRendimiento,
+        GATNominal:GATNominal < 1 ? GATNominal * -1 : GATNominal,
+        GATReal:GATReal < 1 ? GATReal * -1 : GATReal,
+        event:'inversionesCrecienteSimulador'
+        });
+}
+//metrica 2L 
+
+function metrica2L(
+    montoInvertir,
+    tiempo,
+    montoFinal,
+    montoSinPremio,
+    montoPremio,
+    montoISR,
+    tasaRendimiento,
+    GATNominal,
+    GATReal
+)
+{
+
+    let  tiempoInversion = tiempo == 1 ? tiempo+ ' mes' : tiempo+ ' meses';
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Resultado simulador',
+        nd3:'Solicitar asesoría',
+        nd4:'',
+        montoInvertir:montoInvertir,
+        tiempo:tiempoInversion,
+        montoFinal:montoFinal.toFixed(2),
+        montoSinPremio:montoSinPremio.toFixed(2),
+        montoPremio:montoPremio.toFixed(2),
+        montoISR:montoISR.toFixed(2),
+        tasaRendimiento:tasaRendimiento,
+        GATNominal:GATNominal < 1 ? GATNominal * -1 : GATNominal ,
+        GATReal:GATReal < 1 ? GATReal * -1 : GATReal,
+        event:'inversionesCrecienteSimulador'
+        });
+}
+
+
+function metrica2M(inputNombre){
+    dataLayer.push({
+        nd1:'Inversiones - Inversión creciente',
+        nd2:'Descubre cuánto aumenta tu dinero con Inversión Creciente',
+        nd3:'Llenado input: '+inputNombre,
+        nd4:'',
+        event:'inversiones',
+        });
+}
+
+//Metricas Header
+document.getElementById('lnk-logo').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Logo',
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-inicio').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Inicio',
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-inversion').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Inversión Creciente',
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+document.getElementById('nav-pagare').addEventListener('click',()=>{
+    dataLayer.push({
+        nd1:'Inversiones - Header',
+        nd2:'Pagaré',
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+        });
+});
+
+//Footer Metricas
+const acercaFooterSec = document.querySelectorAll('footer #acerca ul li a');
+acercaFooterSec.forEach(element => {
+    element.addEventListener('click',function(){
+        dataLayer.push({
+            nd1:'Inversiones - Footer',
+            nd2:'Acerca de BanCoppel - '+ element.innerText, 
+            nd3:'Página: Inversión Creciente',
+            nd4:'',
+            event:'inversiones'
+            });
+     
+    });    
+});
+
+const unidadLinkFooter = document.querySelectorAll('footer #unidad a');
+        unidadLinkFooter.forEach(unidad => {
+            unidad.addEventListener('click',function(){
+                
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Unidad Especializada Bancoppel Condusef - '+ unidad.innerText, 
+                    nd3:'Página: Inversión Creciente',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+});
+
+const legalesFooter = document.querySelectorAll('.footer--legales #links-legal a');
+        legalesFooter.forEach(legal => {
+            legal.addEventListener('click',function(){
+                
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Legales - '+ legal.innerText, 
+                    nd3:'Página: Inversión Creciente',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+});
+
+const socialesFooter = document.querySelectorAll('.footer--socials img')
+    socialesFooter.forEach(social => {
+            social.addEventListener('click',function(){
+                dataLayer.push({
+                    nd1:'Inversiones - Footer',
+                    nd2:'Contacto - '+ social.getAttribute('title'), 
+                    nd3:'Página: Inversión Creciente',
+                    nd4:'',
+                    event:'inversiones'
+                });
+            });
+})
