@@ -43,7 +43,7 @@ export default {
         },
     },
     server: {
-        /* port: 8080, */
+        //  port: 6000, 
         hot: true,
     },
     // plugins: [htmlPurge({})],
