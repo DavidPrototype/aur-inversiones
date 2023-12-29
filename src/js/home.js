@@ -87,7 +87,7 @@ document.getElementById('inv-card').addEventListener('click',()=>{
     dataLayer.push({
         nd1:'Inversiones - Home',
         nd2:'Inversión creciente',
-        nd3:'¿Cuánto crece',
+        nd3:'¿Cuánto crece?',
         nd4:'',
         event:'inversiones'
         });
@@ -143,15 +143,15 @@ document.getElementById('link-card-pagare').addEventListener('click',()=>{
 });
 
 //Metrica 1F
-document.getElementById('img-ipab').addEventListener('click',()=>{
-    dataLayer.push({
-        nd1:'Inversiones - Home',
-        nd2:'Sección inferior',
-        nd3:'IPAB',
-        nd4:'',
-        event:'inversiones'
-        });
-});
+// document.getElementById('img-ipab').addEventListener('click',()=>{
+//     dataLayer.push({
+//         nd1:'Inversiones - Home',
+//         nd2:'Sección inferior',
+//         nd3:'IPAB',
+//         nd4:'',
+//         event:'inversiones'
+//         });
+// });
 document.getElementById('link-ipab').addEventListener('click',()=>{
     dataLayer.push({
         nd1:'Inversiones - Home',
@@ -251,20 +251,50 @@ acercaFooterSec.forEach(element => {
     });    
 });
 
-const unidadLinkFooter = document.querySelectorAll('footer #unidad a');
-        unidadLinkFooter.forEach(unidad => {
-            unidad.addEventListener('click',function(){
-                
-                dataLayer.push({
-                    nd1:'Inversiones - Footer',
-                    nd2:'Unidad Especializada Bancoppel Condusef - '+ unidad.innerText, 
-                    nd3:'Página: Inicio',
-                    nd4:'',
-                    event:'inversiones'
-                });
-            });
+ //Metricas Footer Unidad
+
+ document.getElementById('lnk-unidadespec').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - Unidad Especializada de Atención a Usuarios', 
+        nd3:'Página: Inicio',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-condusef').addEventListener('click',()=>{
+    
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - www.condusef.gob.mx', 
+        nd3:'Página: Inicio',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correobanco').addEventListener('click',()=>{
+  
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:unebancoppel.com', 
+        nd3:'Página: Inicio',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correoasesoria').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:asesoriacondusef.gob.mx', 
+        nd3:'Página: Inicio',
+        nd4:'',
+        event:'inversiones'
+    });
 });
 
+//------->
 const legalesFooter = document.querySelectorAll('.footer--legales #links-legal a');
         legalesFooter.forEach(legal => {
             legal.addEventListener('click',function(){

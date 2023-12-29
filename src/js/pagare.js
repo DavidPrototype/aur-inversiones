@@ -183,21 +183,24 @@ let regExNumber = /^[0-9$,.]+$/;
 
 document
     .querySelector("#mi-inversion-pagare")
-    .addEventListener("input", (event) => {
+    .addEventListener("blur", (event) => {
         alertErrorInversion.classList.add("d-none");
         //miInversion = parseFloat(event.target.value);
 
         if (event.target.value.length < 1 || isNaN(event.target.value.length)) {
             alertErrorInversion.classList.remove("d-none");
             msgErrorSaldo.innerText = "Debes ingresar un monto para calcular";
-          
+            
+            metrica4J("Debes ingresar un monto para calcular");
+            
             btnCalcular.disabled = true;
         } else {
             let validNumber = regExNumber.test(event.target.value);
             if (!validNumber) {
                 alertErrorInversion.classList.remove("d-none");
                 msgErrorSaldo.innerText = "Solo se permiten números";
-              
+                
+                metrica4J("Solo se permiten números");
                 btnCalcular.disabled = true;
             } else {
                 // console.log(event.target.value)
@@ -209,17 +212,19 @@ document
                     alertErrorInversion.classList.remove("d-none");
                     msgErrorSaldo.innerText =
                         "Debes ingresar un monto para calcular";
-                         
+
+                    metrica4J("Debes ingresar un monto para calcular");     
                     btnCalcular.disabled = true;
                 } else if (miInversion < 1000) {
                     alertErrorInversion.classList.remove("d-none");
                     msgErrorSaldo.innerText =
                         "Monto mínimo a partir de $1,000";
-                       
+
+                    metrica4J("Monto mínimo a partir de $1,000");
                     btnCalcular.disabled = true;
                 } else {
                     btnCalcular.disabled = false;
-                   metrica4o('Monto Inversion');
+                   metrica4o('¿Cuánto quieres invertir?');
                 }
             }
         }
@@ -379,18 +384,7 @@ document
             salidaSimulador.classList.remove('hide');
             salidaSimulador.classList.add('show');
 
-            //Metrica
-            metrica4N(
-
-                miInversion,
-                plazo,
-                montoFinal.toFixed(2),
-                calculoISR.toFixed(2),
-                tasa,
-                gat_nominal,
-                gat_real,
-                fechaVencimiento
-            )
+            
     }
         
 //Metricas 
@@ -466,16 +460,16 @@ accordionItemsPag.forEach(accordionItem => {
     })
 });
 //Metrica 4h ,4I
-document.getElementById('img-ipab').addEventListener('click',()=>{
-    dataLayer.push({
-        nd1:'Inversiones - Pagaré',
-        nd2:'Sección inferior',
-        nd3:'IPAB',
-        nd4:'',
-        event:'inversiones'
-        });
+// document.getElementById('img-ipab').addEventListener('click',()=>{
+//     dataLayer.push({
+//         nd1:'Inversiones - Pagaré',
+//         nd2:'Sección inferior',
+//         nd3:'IPAB',
+//         nd4:'',
+//         event:'inversiones'
+//         });
 
-});
+// });
 document.getElementById('link-ipab').addEventListener('click',()=>{
     dataLayer.push({
         nd1:'Inversiones - Pagaré',
@@ -600,9 +594,9 @@ function metrica4L(
         tiempoPagare:tiempoPagare +' dias',
         montoFinalPagare:montoFinalPagare.toFixed(2),
         montoISRPagare:montoISRPagare.toFixed(2),
-        tasaRendimientoPagare:tasaRendimientoPagare.toFixed(2),
-        GATNominalPagare:GATNominalPagare  < 1 ? GATNominalPagare * -1 : GATNominalPagare ,
-        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare ,
+        tasaRendimientoPagare:(tasaRendimientoPagare * 100).toFixed(2),
+        GATNominalPagare:GATNominalPagare  ,
+        GATRealPagare:GATRealPagare ,
         fechaVencimiento:fechaVencimiento,
         event:'inversionesPagareSimulador'
         });
@@ -627,13 +621,13 @@ function metrica4M(
         nd2:'Resultado simulador',
         nd3:'Solicitar asesoría',
         nd4:'',
-        montoInvertirPagare:montoInvertirPagare,
-        tiempoPagare:tiempoPagare +' dias',
-        montoFinalPagare:montoFinalPagare.toFixed(2),
-        montoISRPagare:montoISRPagare.toFixed(2),
-        tasaRendimientoPagare:tasaRendimientoPagare.toFixed(2),
-        GATNominalPagare:GATNominalPagare < 1 ?  GATNominalPagare * -1 : GATNominalPagare,
-        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare,
+        montoInvertirPagare: montoInvertirPagare,
+        tiempoPagare: tiempoPagare +' dias',
+        montoFinalPagare: montoFinalPagare.toFixed(2),
+        montoISRPagare: montoISRPagare.toFixed(2),
+        tasaRendimientoPagare: (tasaRendimientoPagare * 100).toFixed(2),
+        GATNominalPagare: GATNominalPagare,
+        GATRealPagare: GATRealPagare,
         fechaVencimiento:fechaVencimiento,
         event:'inversionesPagareSimulador'
         });
@@ -659,12 +653,12 @@ function metrica4N(
         nd3:'Información fecha de vencimiento',
         nd4:'',
         montoInvertirPagare:montoInvertirPagare,
-        tiempoPagare:tiempoPagare,
+        tiempoPagare:tiempoPagare +' dias',
         montoFinalPagare:montoFinalPagare,
         montoISRPagare:montoISRPagare,
-        tasaRendimientoPagare:tasaRendimientoPagare,
-        GATNominalPagare:GATNominalPagare < 1 ? GATNominalPagare * -1 : GATNominalPagare,
-        GATRealPagare:GATRealPagare < 1 ? GATRealPagare * -1 : GATRealPagare,
+        tasaRendimientoPagare:(tasaRendimientoPagare * 100).toFixed(2),
+        GATNominalPagare:GATNominalPagare ,
+        GATRealPagare:GATRealPagare,
         fechaVencimiento:fechaVencimiento,
         event:'inversionesPagareSimulador'
         });
@@ -734,18 +728,47 @@ acercaFooterSec.forEach(element => {
     });    
 });
 
-const unidadLinkFooter = document.querySelectorAll('footer #unidad a');
-        unidadLinkFooter.forEach(unidad => {
-            unidad.addEventListener('click',function(){
-                
-                dataLayer.push({
-                    nd1:'Inversiones - Footer',
-                    nd2:'Unidad Especializada Bancoppel Condusef - '+ unidad.innerText, 
-                    nd3:'Página: Pagaré',
-                    nd4:'',
-                    event:'inversiones'
-                });
-            });
+
+//Metricas Footer Unidad
+document.getElementById('lnk-unidadespec').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - Unidad Especializada de Atención a Usuarios', 
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-condusef').addEventListener('click',()=>{
+    
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - www.condusef.gob.mx', 
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correobanco').addEventListener('click',()=>{
+  
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:unebancoppel.com', 
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correoasesoria').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:asesoriacondusef.gob.mx', 
+        nd3:'Página: Pagaré',
+        nd4:'',
+        event:'inversiones'
+    });
 });
 
 const legalesFooter = document.querySelectorAll('.footer--legales #links-legal a');
@@ -774,3 +797,21 @@ const socialesFooter = document.querySelectorAll('.footer--socials img')
                 });
             });
 })
+
+//Evento del tooltip, informacion de la fecha de vencimiento
+ayudaElem.addEventListener('shown.bs.tooltip', () => {
+    //Metrica
+   
+           
+            metrica4N(
+
+                montoInvertirPagare,
+                plazoPagare,
+                montoFinalPagare.toFixed(2),
+                calculoISRPagare.toFixed(2),
+                tasaPagare,
+                gatNominalPagare,
+                gatRealPagare,
+                fecha_vencePagare
+            )
+  })

@@ -170,6 +170,7 @@ let tasaInversion=0;
 let interesBrutoInversion=0;
 let montoFinalInversion=0;
 let isrInversion=0;
+let montoIsrInversion=0;
 let isrCapitalInversion=0;
 let monto_exentoInversion=0;
 let gat_nominalInversion=0;
@@ -224,7 +225,7 @@ inputInversion.addEventListener("input", (event) => {
 
                     inputInversion.classList.remove('error');
                     inputInversion.classList.add('aprobado');
-                    metrica2M('Monto Inversion');
+                    metrica2M('¿Cuánto quieres invertir?');
                     btnCalcular.disabled = false;
                 }
             }
@@ -244,7 +245,7 @@ inputInversion.addEventListener("input", (event) => {
             // console.log(option.dataset.value)
             if(option.dataset.value !=''){
                 alertErrorTiempo.classList.add("d-none");
-                metrica2M('Tiempo');
+                metrica2M('¿Durante cuánto tiempo?');
                 btnCalcular.disabled = false;               
             }else{
                 alertErrorTiempo.classList.remove("d-none");
@@ -268,6 +269,8 @@ btnCalcular.addEventListener('click',(e)=>{
             .value.replace("$", "")
             .replace(",", "")
     );
+
+    metrica2D(miInversion, valorSelect);
 
     if (miInversion <= 0 || isNaN(miInversion)) {
         alertErrorInversion.classList.remove("d-none");
@@ -320,26 +323,32 @@ function calcular_inversion(miInversion, plazo){
     let tasa=parseFloat(datosTabla[3]/100)
     let interesBruto =0;
     let montoFinal =0;
-    let isr = 0;
+    let isr = 0.05;
     let isrCapital=0.15;
     let monto_exento=189222;
+    let montoISR=0;
     let gat_nominal = 4.00;
     let gat_real = -0.12;
     let premio = 0;
 
     interesBruto = miInversion * (tasa/360) * plazoHasta;
-    // console.log(interesBruto)
-    montoFinal = (miInversion +interesBruto) - isr;
+   
+   
+    
     // console.log(montoFinal.toFixed(2));
     if(plazo == 12){
         let fechas = fechas_periodo(); //genera las fechas de los periodos a partir de dia de hoy
         let diffDias = periodo_dias(fechas); // diferencia de dias
         
-        let montoPeriodos = monto_final_periodos(data,diffDias,miInversion,monto_exento,isrCapital);
-        let montoPremio = monto_final_premio(data,diffDias,miInversion,monto_exento,isrCapital);
+        let montoPeriodos = monto_final_periodos(data,diffDias,miInversion,monto_exento,isr);
+        let montoPremio = monto_final_premio(data,diffDias,miInversion,monto_exento,isr);
 
         premio =montoPremio - montoPeriodos;
+        
+        montoISR = (miInversion - monto_exento) * ( 0.0050 / 365) * plazoHasta;
+        
     }
+    montoFinal = (miInversion +interesBruto) - montoISR;
     //Asignacion de variables para seguimiento
      plazoInversion=plazo;
      plazoHastaInversion=plazoHasta;
@@ -348,6 +357,7 @@ function calcular_inversion(miInversion, plazo){
      montoFinalInversion=montoFinal;
      isrInversion=isr;
      isrCapitalInversion=isrCapital;
+     montoIsrInversion=montoISR;
      monto_exentoInversion=monto_exento;
      gat_nominalInversion=gat_nominal;
      gat_realInversion=gat_real;
@@ -505,6 +515,7 @@ document.getElementById('link-conoce-inv').addEventListener('click',()=>{
         nd4:'',
         event:'inversiones'
         });
+       
 });
 
 //Metrica 2C
@@ -582,16 +593,16 @@ accordionItems.forEach(accordionItem => {
 });
 
 //Metrica 2H
-document.getElementById('img-ipab').addEventListener('click',()=>{
-    dataLayer.push({
-        nd1:'Inversiones - Inversión creciente',
-        nd2:'Sección inferior',
-        nd3:'IPAB',
-        nd4:'',
-        event:'inversiones'
-     });
+// document.getElementById('img-ipab').addEventListener('click',()=>{
+//     dataLayer.push({
+//         nd1:'Inversiones - Inversión creciente',
+//         nd2:'Sección inferior',
+//         nd3:'IPAB',
+//         nd4:'',
+//         event:'inversiones'
+//      });
 
-});
+// });
 document.getElementById('link-ipab').addEventListener('click',()=>{
     dataLayer.push({
         nd1:'Inversiones - Inversión creciente',
@@ -632,7 +643,7 @@ document.getElementById('lnk-siminver-asesoria').addEventListener('click',()=>{
         montoFinalInversion,
         montoFinalInversion,
         premioInversion,
-        interesBrutoInversion,
+        montoIsrInversion,
         tasaInversion,
         gat_nominalInversion,
         gat_realInversion
@@ -657,7 +668,8 @@ function metrica2I(textoAlerta){
 }
 //Metrica 2J
 function metrica2J(montoInvertir, tiempo){
-   let  tiempoMetrica = tiempo == 1 ? tiempo+ ' mes' : tiempo+ ' meses';
+    
+   let  tiempoMetrica = tiempo === 1 ? tiempo+ ' mes' : tiempo+ ' meses';
     dataLayer.push({
         nd1:'Inversiones - Inversión creciente',
         nd2:'Descubre cuánto aumenta tu dinero con Inversión Creciente',
@@ -670,20 +682,23 @@ function metrica2J(montoInvertir, tiempo){
 }
 
 function metrica2K(montoInvertir,tiempo,montoFinal,montoSinPremio,montoPremio,montoISR,tasaRendimiento,GATNominal,GATReal){
+    let  tiempoMetrica = tiempo === 1 ? tiempo+ ' mes' : tiempo+ ' meses';
     dataLayer.push({
         nd1:'Inversiones - Inversión creciente',
         nd2:'Resultado simulador',
         nd3:'Llegada',
         nd4:'',
         montoInvertir:montoInvertir,
-        tiempo:tiempo,
+        tiempo:tiempoMetrica,
         montoFinal:montoFinal.toFixed(2),
         montoSinPremio:montoSinPremio.toFixed(2),
         montoPremio:montoPremio.toFixed(2),
         montoISR:montoISR.toFixed(2),
-        tasaRendimiento:tasaRendimiento,
-        GATNominal:GATNominal < 1 ? GATNominal * -1 : GATNominal,
-        GATReal:GATReal < 1 ? GATReal * -1 : GATReal,
+        tasaRendimiento:(tasaRendimiento*100).toFixed(2),
+        // GATNominal:GATNominal < 1 ? GATNominal * -1 : GATNominal,
+        // GATReal:GATReal < 1 ? GATReal * -1 : GATReal,
+        GATNominal:GATNominal ,
+        GATReal:GATReal,
         event:'inversionesCrecienteSimulador'
         });
 }
@@ -714,7 +729,7 @@ function metrica2L(
         montoSinPremio:montoSinPremio.toFixed(2),
         montoPremio:montoPremio.toFixed(2),
         montoISR:montoISR.toFixed(2),
-        tasaRendimiento:tasaRendimiento,
+        tasaRendimiento:tasaRendimiento*100,
         GATNominal:GATNominal < 1 ? GATNominal * -1 : GATNominal ,
         GATReal:GATReal < 1 ? GATReal * -1 : GATReal,
         event:'inversionesCrecienteSimulador'
@@ -785,18 +800,47 @@ acercaFooterSec.forEach(element => {
     });    
 });
 
-const unidadLinkFooter = document.querySelectorAll('footer #unidad a');
-        unidadLinkFooter.forEach(unidad => {
-            unidad.addEventListener('click',function(){
-                
-                dataLayer.push({
-                    nd1:'Inversiones - Footer',
-                    nd2:'Unidad Especializada Bancoppel Condusef - '+ unidad.innerText, 
-                    nd3:'Página: Inversión Creciente',
-                    nd4:'',
-                    event:'inversiones'
-                });
-            });
+
+ //Metricas Footer Unidad
+ document.getElementById('lnk-unidadespec').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - Unidad Especializada de Atención a Usuarios', 
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-condusef').addEventListener('click',()=>{
+    
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - www.condusef.gob.mx', 
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correobanco').addEventListener('click',()=>{
+  
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:unebancoppel.com', 
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+    });
+});
+document.getElementById('lnk-correoasesoria').addEventListener('click',()=>{
+   
+    dataLayer.push({
+        nd1:'Inversiones - Footer',
+        nd2:'Unidad Especializada de Atención a Usuarios - correo:asesoriacondusef.gob.mx', 
+        nd3:'Página: Inversión Creciente',
+        nd4:'',
+        event:'inversiones'
+    });
 });
 
 const legalesFooter = document.querySelectorAll('.footer--legales #links-legal a');

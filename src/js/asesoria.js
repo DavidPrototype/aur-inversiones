@@ -14,7 +14,7 @@ var regExTexto = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+(\s*[a-zA-ZÀ-ÿ\u00f1\u00d1]*)*[a-
 let validNombre,validEmail;
 document
     .querySelector("#nombre")
-    .addEventListener("input", (event) => {
+    .addEventListener("blur", (event) => {
        let nombre= event.target.value.trim();
         if (nombre.length < 1 ) {
             alertErrorNombre.classList.remove("d-none");
@@ -44,7 +44,7 @@ document
 
 document
     .querySelector("#email-input")
-    .addEventListener("input", (event) => {
+    .addEventListener("blur", (event) => {
         console.log(event.target.length)
         console.log(event.target.value)
         if (event.target.value.length < 1 || isNaN(event.target.value.length) ) {

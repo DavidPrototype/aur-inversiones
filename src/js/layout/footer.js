@@ -35,16 +35,16 @@ export default class Footer extends HTMLElement {
                    
                    <p>
                        BanCoppel, S.A., Institución de Banca Múltiple recibe las consultas, reclamaciones o
-                       aclaraciones en su <a href="https://bancoppel.com/pdf/unidad_especializada_bancoppel_condusef.pdf" target="_blank"><span> Unidad Especializada de Atención a Usuarios<span></a>, ubicada en 
+                       aclaraciones en su <a href="https://bancoppel.com/pdf/unidad_especializada_bancoppel_condusef.pdf" target="_blank" id="lnk-unidadespec"><span> Unidad Especializada de Atención a Usuarios<span></a>, ubicada en 
                        Av. Insurgentes Sur 553, Interior Piso 6, Colonia Escandón II Sección, C.P. 11800, Miguel Hidalgo, Ciudad de México y 
-                       por  <span> correo electrónico <a href="mailto:une@bancoppel.com">une@bancoppel.com</a> </span> o <span>teléfono (55) 5278 0000 ext. 510196</span> , 
+                       por  <span> correo electrónico <a href="mailto:une@bancoppel.com" id="lnk-correobanco">une@bancoppel.com</a> </span> o <span>teléfono (55) 5278 0000 ext. 510196</span> , 
                        así como en cualquiera de sus sucursales u oficinas. En el caso de no obtener una 
                        respuesta satisfactoria, podrá acudir a la Comisión Nacional para la Protección 
                        y Defensa de los Usuarios de Servicios Financieros.
                    </p>
                    <p>
-                      <span> Correo electrónico: <a href="mailto:une@bancoppel.com">asesoria@condusef.gob.mx</a>, chat en línea 
-                       <a href="https://www.condusef.gob.mx/" target="_blank">www.condusef.gob.mx</a> o Tel: 800 999 8080 y 55 53 40 09 99.
+                      <span> Correo electrónico: <a href="mailto:une@bancoppel.com" id="lnk-correoasesoria">asesoria@condusef.gob.mx</a>, chat en línea 
+                       <a href="https://www.condusef.gob.mx/" target="_blank" id="lnk-condusef">www.condusef.gob.mx</a> o Tel: 800 999 8080 y 55 53 40 09 99.
                       </span>   
                    </p>
                </div>
