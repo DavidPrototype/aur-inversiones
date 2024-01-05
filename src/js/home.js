@@ -8,7 +8,8 @@ import 'swiper/css/pagination';
 
 const mediaquery = window.matchMedia("(max-width:1278px)");
 const mediaqueryBeneficios = window.matchMedia("(max-width:767px)");
-let swiperBeneficios, swiperPromos;
+const mediaqueryOpiniones = window.matchMedia("(max-width:767px)");
+let swiperBeneficios, swiperPromos, swiperOpiniones;
 
 const initSliderPromos = () => {
     if (mediaquery.matches === true) {
@@ -30,6 +31,18 @@ const initSliderBeneficios = () => {
         /* console.log("d"); */
         if (swiperBeneficios !== undefined ){           
             swiperBeneficios.destroy(true, true);
+        } 
+        return;
+    }
+};
+const initSliderOpiniones = () => {
+    if (mediaqueryOpiniones.matches === true) {
+        /* console.log("mo"); */
+        return enableSwiperOpiniones();
+    } else if (mediaqueryOpiniones.matches === false) {
+        /* console.log("d"); */
+        if (swiperOpiniones !== undefined ){           
+            swiperOpiniones.destroy(true, true);
         } 
         return;
     }
@@ -59,12 +72,26 @@ const enableSwiperBeneficios = () => {
         },
     });
 };
+const enableSwiperOpiniones = () => {
+  
+    swiperOpiniones = new Swiper(".swiper-opiniones", {
+        modules: [Pagination],
+        spaceBetween: 16,
+        slidesPerView: "auto",
+        direction: "horizontal",
+        pagination: {
+            el: ".swiper-opiniones-pagination",
+        },
+    });
+};
 
 mediaquery.addListener(initSliderPromos);
 mediaqueryBeneficios.addListener(initSliderBeneficios);
+mediaqueryOpiniones.addListener(initSliderOpiniones);
 
 initSliderPromos();
 initSliderBeneficios();
+initSliderOpiniones();
 
 //MEtricas
 dataLayer.push({
